@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "419947655416",
+    "firebase_url": "https://fitlite-2a243.firebaseio.com",
+    "project_id": "fitlite-2a243",
+    "storage_bucket": "fitlite-2a243.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:419947655416:android:65c206ab0235a5c6",
+        "android_client_info": {
+          "package_name": "koolkat.fitlite"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "419947655416-ubnn5tlkv8ioes4i6oq74fh1f0ckikhh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "koolkat.fitlite",
+            "certificate_hash": "f4c31811287d42a8d2e416dea8d6995d6417e93e"
+          }
+        },
+        {
+          "client_id": "419947655416-3mdv27psk8do77tqmlvjpave9a811nce.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdZ3xWNMbbrFtfhByD1JpqviR6HCqzLUI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "419947655416-3mdv27psk8do77tqmlvjpave9a811nce.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
