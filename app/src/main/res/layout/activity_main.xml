@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    android:background="#224070">
+    android:background="#222222">
 
     <TextView
         android:layout_width="match_parent"

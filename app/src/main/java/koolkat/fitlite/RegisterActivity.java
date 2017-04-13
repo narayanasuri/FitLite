@@ -3,6 +3,7 @@ package koolkat.fitlite;
 /**
  * Created by Admin on 4/8/2017.
  */
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;

@@ -1,43 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    android:background="#224070">
+    android:background="#222222">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="FitLite"
-        android:textColor="@android:color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:padding="24dp"/>
-
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
+        android:id="@+id/login_layout"
+        android:layout_centerVertical="true"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
         android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="6dp"
-            android:text="Login"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:textStyle="bold" />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:textColorHint="#808080">
 
             <EditText
                 android:layout_width="match_parent"
@@ -56,7 +42,9 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:passwordToggleEnabled="true">
+            app:passwordToggleEnabled="true"
+            android:textColorHint="#808080"
+            app:passwordToggleTint="#808080">
 
         <EditText
             android:layout_width="match_parent"
@@ -79,28 +67,74 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
-            android:background="@drawable/button_border"
-            android:text="Submit"
+            android:background="@color/matYellow"
+            android:text="Log in"
             android:textColor="@android:color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/login_layout"
+        android:layout_marginBottom="40dp"
+        android:orientation="vertical"
+        android:background="@color/matYellow">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:padding="6dp"
-            android:text="Don't have an account?"
+            android:text="FitLite"
+            android:textColor="#222222"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="16dp"
+            android:layout_gravity="center_horizontal"
+            android:textSize="32sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Welcome to FitLite!\nLog In or Register to continue."
             android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:textSize="18sp"
+            android:typeface="sans"
+            android:padding="16dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/register_tv"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:layout_below="@id/login_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:text="Don't have an account?"
+            android:id="@+id/signup_tv"
+            android:layout_below="@id/login_layout"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/btnRegisterActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
-            android:background="@drawable/button_border"
+            android:layout_below="@id/signup_tv"
+            android:background="@color/matYellow"
             android:text="Register"
             android:textColor="@android:color/white" />
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
