@@ -100,6 +100,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
                                 FirebaseUser user = firebaseAuth.getCurrentUser();
                                 databaseReference.child("Users").child(user.getUid()).setValue(userInformation);
+                                databaseReference.child("requests").child(user.getUid()).child("numberOfOrders").setValue(0);
                             }
                             else{
                                 progressDialog.dismiss();

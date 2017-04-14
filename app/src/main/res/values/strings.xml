@@ -7,6 +7,14 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_profile">Profile</string>
-    <string name="log_out">log out</string>
+    <string name="log_out">Log Out</string>
     <string name="my_profile">My Profile</string>
+    <string-array name="oiltypes">
+        <item>Oil Type A</item>
+        <item>Oil Type B</item>
+        <item>Oil Type C</item>
+        <item>Oil Type D</item>
+    </string-array>
+    <string name="orders">Please select an oil type for requesting. Your request will be processed shortly.
+        You can see the status of your request in the \'ORDERS\' pane. If you want to place, multiple orders, please do so one by one.</string>
 </resources>
