@@ -34,6 +34,7 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
     ArrayAdapter<CharSequence> adapter;
     String oiltype;
     String orderid;
+    public String status = "Pending";
     int quantity;
     public int reqId;
     Button requestButton;
@@ -78,10 +79,10 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
 
         requestButton.setOnClickListener(this);
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        databaseReference.child("requests").child(user.getUid()).addValueEventListener(new ValueEventListener() {
+        databaseReference.child("requests").child(user.getUid()).child("orders").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-               reqId = (int)dataSnapshot.getChildrenCount()-1;
+               reqId = (int)dataSnapshot.getChildrenCount();
                 Log.d("ORDER ID", reqId + "");
             }
 
@@ -104,7 +105,6 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
                 quantity = Integer.parseInt(quantityet.getText().toString());
                 if (quantity > 0) {
                     a(reqId);
-
                 }
             }
 
@@ -113,21 +113,19 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
                 Toast.makeText(getContext(), "Request Failed! Please try again!", Toast.LENGTH_SHORT).show();
             }
             quantityet.setText("");
-
         }
-
-
-
     }
+
     public void a(int reqId) {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         reqId = reqId + 1;
         orderid = "order" + reqId;
-        OilRequest oilRequest = new OilRequest(reqId, oiltype, quantity);
+        OilRequest oilRequest = new OilRequest(reqId, oiltype, quantity, status);
         databaseReference.child("requests").child(user.getUid()).child("numberOfOrders").setValue(reqId);
-        databaseReference.child("requests").child(user.getUid()).child(orderid).setValue(oilRequest);
+        databaseReference.child("requests").child(user.getUid()).child("orders").child(orderid).setValue(oilRequest);
         progressDialog.dismiss();
         Toast.makeText(getContext(), "Request successful!", Toast.LENGTH_SHORT).show();
 
     }
+
 }
