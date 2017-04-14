@@ -1,138 +1,140 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:background="#222222"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="koolkat.fitlite.UserActivity$PlaceholderFragment"
-    android:background="#222222">
+    tools:context="koolkat.fitlite.UserActivity$PlaceholderFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/pricestv"
-        android:padding="16dp"
-        android:textSize="18sp"
-        android:textColor="@android:color/white"
-        android:text="Prices may vary from time to time. Price of the oil while making the request is considered the price and the amount is calculated with respect to the same."/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <android.support.v7.widget.CardView
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:elevation="3dp"
-        android:id="@+id/prices_card"
-        android:layout_below="@id/pricestv"
-        android:layout_centerHorizontal="true"
-        card_view:cardBackgroundColor="@color/matYellow"
-        android:padding="16dp"
-        card_view:cardCornerRadius="4dp">
+        <TextView
+            android:id="@+id/pricestv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Prices may vary from time to time. Price of the oil while making the request is considered the price and the amount is calculated with respect to the same."
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <android.support.v7.widget.CardView
+            android:id="@+id/prices_card"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pricestv"
+            android:layout_centerHorizontal="true"
+            android:elevation="3dp"
+            android:padding="16dp"
+            card_view:cardBackgroundColor="@color/matYellow"
+            card_view:cardCornerRadius="4dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="PRICES TODAY"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                android:id="@+id/pricetitle_tv"
-                android:textStyle="bold"
-                android:layout_centerHorizontal="true"
-                android:paddingTop="14dp"/>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="4dp"
-                android:layout_marginTop="10dp"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/pricetitle_tv"
-                android:id="@+id/oiltypeAlayout">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <TextView
+                    android:id="@+id/pricetitle_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/oil_type_a"
-                    android:gravity="center"
-                    android:id="@+id/oiltypeAtv"
+                    android:layout_centerHorizontal="true"
+                    android:paddingTop="14dp"
+                    android:text="PRICES TODAY"
                     android:textColor="@android:color/white"
-                    android:textSize="16sp"
-                    />
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_centerHorizontal="true"
-                android:padding="4dp"
-                android:layout_below="@id/oiltypeAlayout"
-                android:id="@+id/oiltypeBlayout">
-
-                <TextView
+                <LinearLayout
+                    android:id="@+id/oiltypeAlayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/oil_type_b"
-                    android:gravity="center"
-                    android:id="@+id/oiltypeBtv"
-                    android:textColor="@android:color/white"
-                    android:textSize="16sp"
-                    />
+                    android:layout_below="@id/pricetitle_tv"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/oiltypeAtv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/oil_type_a"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_centerHorizontal="true"
-                android:padding="4dp"
-                android:layout_below="@id/oiltypeBlayout"
-                android:id="@+id/oiltypeClayout">
+                </LinearLayout>
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/oiltypeBlayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/oil_type_c"
-                    android:gravity="center"
-                    android:id="@+id/oiltypeCtv"
-                    android:textColor="@android:color/white"
-                    android:textSize="16sp"
-                    />
+                    android:layout_below="@id/oiltypeAlayout"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/oiltypeBtv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/oil_type_b"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_centerHorizontal="true"
-                android:padding="4dp"
-                android:layout_below="@id/oiltypeClayout"
-                android:id="@+id/oiltypeDlayout">
+                </LinearLayout>
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/oiltypeClayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/oil_type_d"
-                    android:gravity="center"
-                    android:id="@+id/oiltypeDtv"
-                    android:textColor="@android:color/white"
-                    android:textSize="16sp"
-                    android:paddingBottom="14dp"
-                    />
+                    android:layout_below="@id/oiltypeBlayout"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/oiltypeCtv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/oil_type_c"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
 
-        </RelativeLayout>
+                </LinearLayout>
 
-    </android.support.v7.widget.CardView>
+                <LinearLayout
+                    android:id="@+id/oiltypeDlayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/oiltypeClayout"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
 
-</RelativeLayout>
+                    <TextView
+                        android:id="@+id/oiltypeDtv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingBottom="14dp"
+                        android:text="@string/oil_type_d"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+
+</android.support.v4.widget.NestedScrollView>
