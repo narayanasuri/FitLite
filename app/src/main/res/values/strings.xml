@@ -17,4 +17,13 @@
     </string-array>
     <string name="orders">Please select an oil type for requesting. Your request will be processed shortly.
         You can see the status of your request in the \'ORDERS\' pane. If you want to place, multiple orders, please do so one by one.</string>
+    <string name="oil_type_a">Oil Type A : ₹</string>
+    <string name="oil_type_b">Oil Type B : ₹</string>
+    <string name="oil_type_c">Oil Type C : ₹</string>
+    <string name="oil_type_d">Oil Type D : ₹</string>
+    <string name="oil">Oil :</string>
+    <string name="price">Price :</string>
+    <string name="quantity">Quantity :</string>
+    <string name="status">Status :</string>
+    <string name="select_an_oil_type">SELECT AN OIL TYPE</string>
 </resources>

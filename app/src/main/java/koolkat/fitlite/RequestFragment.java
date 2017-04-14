@@ -4,7 +4,9 @@ package koolkat.fitlite;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,9 +39,11 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
     String orderid;
     public String status = "Pending";
     int quantity;
+    int price=0,Aprice,Bprice,Cprice,Dprice;
     public int reqId;
     Button requestButton;
     EditText quantityet;
+    TextView pricea;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
     private ProgressDialog progressDialog;
@@ -56,6 +61,7 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
         spinner = (Spinner) view.findViewById(R.id.oiltypespinner);
         requestButton = (Button) view.findViewById(R.id.requestBtn);
         quantityet = (EditText) view.findViewById(R.id.quantity_et);
+        pricea = (TextView) view.findViewById(R.id.price);
 
         progressDialog = new ProgressDialog(getContext());
         firebaseAuth = FirebaseAuth.getInstance();
@@ -65,23 +71,29 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
         adapter .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                oiltype = parent.getItemAtPosition(position).toString();
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
         requestButton.setOnClickListener(this);
         FirebaseUser user = firebaseAuth.getCurrentUser();
+        databaseReference.child("price").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Aprice = Integer.parseInt( dataSnapshot.child("oil1").getValue().toString());
+                Bprice = Integer.parseInt( dataSnapshot.child("oil2").getValue().toString());
+                Cprice = Integer.parseInt( dataSnapshot.child("oil3").getValue().toString());
+                Dprice = Integer.parseInt( dataSnapshot.child("oil4").getValue().toString());
+
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         databaseReference.child("requests").child(user.getUid()).child("orders").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
                reqId = (int)dataSnapshot.getChildrenCount();
                 Log.d("ORDER ID", reqId + "");
             }
@@ -89,6 +101,37 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                oiltype = parent.getItemAtPosition(position).toString();
+                b();
+                pricea.setText("₹"+price+"/-");
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        quantityet.addTextChangedListener(new TextWatcher()
+        {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                b();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                pricea.setText("₹"+price+"/-");
             }
         });
         return view;
@@ -120,12 +163,28 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         reqId = reqId + 1;
         orderid = "order" + reqId;
-        OilRequest oilRequest = new OilRequest(reqId, oiltype, quantity, status);
+        OilRequest oilRequest = new OilRequest(reqId, oiltype, quantity, status,price);
         databaseReference.child("requests").child(user.getUid()).child("numberOfOrders").setValue(reqId);
         databaseReference.child("requests").child(user.getUid()).child("orders").child(orderid).setValue(oilRequest);
         progressDialog.dismiss();
         Toast.makeText(getContext(), "Request successful!", Toast.LENGTH_SHORT).show();
 
+    }
+    public void b(){
+        String alpha=quantityet.getText().toString();
+        int x;
+        if(alpha.equals(""))
+            x=0;
+        else
+            x=Integer.parseInt(alpha);
+        switch (oiltype)
+        {
+            case "Oil Type A":price=x*Aprice;break;
+            case "Oil Type B":price=x*Bprice;break;
+            case "Oil Type C":price=x*Cprice;break;
+            case "Oil Type D":price=x*Dprice;break;
+            default:price=0;
+        }
     }
 
 }

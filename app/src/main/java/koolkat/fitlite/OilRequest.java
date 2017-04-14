@@ -10,15 +10,16 @@ public class OilRequest {
     public String oilType;
     public int oilQuantity;
     public String status;
-
+    public int price;
     public OilRequest() {
     }
 
-    public OilRequest(int requestId, String oilType, int oilQuantity, String status) {
+    public OilRequest(int requestId, String oilType, int oilQuantity, String status,int price) {
         this.requestId = requestId;
         this.oilType = oilType;
         this.oilQuantity = oilQuantity;
         this.status = status;
+        this.price =price;
     }
 
     public int getRequestId() {
@@ -31,6 +32,10 @@ public class OilRequest {
 
     public int getOilQuantity() {
         return oilQuantity;
+    }
+
+    public int getPrice() {
+        return price;
     }
 
     public String getStatus(){ return status; }

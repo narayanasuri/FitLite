@@ -30,10 +30,11 @@ public class OrderFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
 
-    private final List<String> oilTypes = new ArrayList<String>();;
-    private final List<Integer> oilQuantitities = new ArrayList<Integer>();
-    private final List<String> statuses = new ArrayList<String>();
-    private final List<OilRequest> oilRequestsList = new ArrayList<OilRequest>();
+    private final List<String> oilTypes = new ArrayList<>();
+    private final List<Integer> oilQuantitities = new ArrayList<>();
+    private final List<Integer> pricec = new ArrayList<Integer>();
+    private final List<String> statuses = new ArrayList<>();
+    private final List<OilRequest> oilRequestsList = new ArrayList<>();
 
     private static RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -70,6 +71,7 @@ public class OrderFragment extends Fragment {
                     oilTypes.add(oilRequest.getOilType());
                     oilQuantitities.add(oilRequest.getOilQuantity());
                     statuses.add(oilRequest.getStatus());
+                    pricec.add(oilRequest.getPrice());
                 }
                 recyclerView.setHasFixedSize(true);
 
@@ -77,7 +79,7 @@ public class OrderFragment extends Fragment {
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-                adapter = new CustomAdapter(oilTypes, oilQuantitities, statuses);
+                adapter = new CustomAdapter(oilTypes, oilQuantitities,pricec, statuses);
 
                 recyclerView.setAdapter(adapter);
 

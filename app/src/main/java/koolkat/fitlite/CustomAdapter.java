@@ -15,11 +15,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     private List<String> oilTypes;
     private List<Integer> oilQuantitities;
+    private List<Integer> pricey;
     private List<String> statuses;
 
-    public CustomAdapter(List<String> oilTypes, List<Integer> oilQuantitities, List<String> statuses) {
+    public CustomAdapter(List<String> oilTypes, List<Integer> oilQuantitities, List<Integer> pricey, List<String> statuses) {
         this.oilTypes = oilTypes;
         this.oilQuantitities = oilQuantitities;
+        this.pricey=pricey;
         this.statuses = statuses;
     }
 
@@ -27,6 +29,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         TextView oiltypetv;
         TextView oilquantitytv;
         TextView statustv;
+        TextView pricec;
 
 
         public ViewHolder(View itemView) {
@@ -34,6 +37,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             oiltypetv = (TextView) itemView.findViewById(R.id.card_oiltype);
             oilquantitytv = (TextView) itemView.findViewById(R.id.card_oilquantity);
             statustv = (TextView) itemView.findViewById(R.id.card_status);
+            pricec = (TextView) itemView.findViewById(R.id.pricec);
+
         }
     }
 
@@ -51,7 +56,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
         viewHolder.oiltypetv.append(oilTypes.get(i));
         String quant = oilQuantitities.get(i).toString();
+        String price = pricey.get(i).toString();
         viewHolder.oilquantitytv.append(quant+" litres");
+        viewHolder.pricec.append("₹"+price+"/-");
         viewHolder.statustv.append(statuses.get(i));
     }
 

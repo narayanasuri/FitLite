@@ -58,7 +58,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Oil Type A : Rs. "
+                    android:text="@string/oil_type_a"
                     android:gravity="center"
                     android:id="@+id/oiltypeAtv"
                     android:textColor="@android:color/white"
@@ -79,7 +79,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Oil Type B : Rs. "
+                    android:text="@string/oil_type_b"
                     android:gravity="center"
                     android:id="@+id/oiltypeBtv"
                     android:textColor="@android:color/white"
@@ -100,7 +100,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Oil Type C : Rs. "
+                    android:text="@string/oil_type_c"
                     android:gravity="center"
                     android:id="@+id/oiltypeCtv"
                     android:textColor="@android:color/white"
@@ -121,7 +121,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Oil Type D : Rs. "
+                    android:text="@string/oil_type_d"
                     android:gravity="center"
                     android:id="@+id/oiltypeDtv"
                     android:textColor="@android:color/white"
