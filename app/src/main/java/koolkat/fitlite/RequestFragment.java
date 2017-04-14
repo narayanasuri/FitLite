@@ -111,6 +111,7 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
                 pricea.setText("₹"+price+"/-");
             }
 
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
