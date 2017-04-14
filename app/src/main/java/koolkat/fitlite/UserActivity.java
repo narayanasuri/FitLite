@@ -53,6 +53,7 @@ public class UserActivity extends AppCompatActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        mViewPager.setCurrentItem(1);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -61,15 +62,6 @@ public class UserActivity extends AppCompatActivity {
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.main_content);
 
         Snackbar.make(coordinatorLayout, "Sign In Successful!", Snackbar.LENGTH_LONG).show();
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         if(firebaseAuth.getCurrentUser() == null){
             finish();

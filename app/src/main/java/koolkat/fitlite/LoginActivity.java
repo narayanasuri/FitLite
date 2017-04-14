@@ -13,6 +13,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,7 +23,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
-    Button btnRegisterAct, btnLogin;
+    Button btnLogin;
+    TextView registertv;
     EditText emailet, passwordet;
 
     private FirebaseAuth firebaseAuth;
@@ -36,11 +38,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
 
-        btnRegisterAct = (Button) findViewById(R.id.btnRegisterActivity);
+        registertv = (TextView) findViewById(R.id.signup_tv);
         btnLogin = (Button) findViewById(R.id.btnLogin);
         emailet = (EditText) findViewById(R.id.emailidet);
         passwordet = (EditText) findViewById(R.id.passwordet);
-        btnRegisterAct.setOnClickListener(this);
+        registertv.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
 
         if(firebaseAuth.getCurrentUser() != null){
@@ -84,7 +86,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        if(v==btnRegisterAct)
+        if(v==registertv)
             registerAccount();
 
         if(v==btnLogin){

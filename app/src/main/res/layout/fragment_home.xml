@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,10 +10,22 @@
     tools:context="koolkat.fitlite.UserActivity$PlaceholderFragment"
     android:background="#222222">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pricestv"
+        android:padding="16dp"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:text="Prices may vary from time to time. Price of the oil while making the request is considered the price and the amount is calculated with respect to the same."/>
+
     <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:elevation="3dp"
+        android:id="@+id/prices_card"
+        android:layout_below="@id/pricestv"
+        android:layout_centerHorizontal="true"
         card_view:cardBackgroundColor="@color/matYellow"
         android:padding="16dp"
         card_view:cardCornerRadius="4dp">
@@ -25,10 +37,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="PRICES"
-                android:textColor="@android:color/black"
+                android:text="PRICES TODAY"
+                android:textColor="@android:color/white"
                 android:textSize="20sp"
                 android:id="@+id/pricetitle_tv"
+                android:textStyle="bold"
                 android:layout_centerHorizontal="true"
                 android:paddingTop="14dp"/>
 
@@ -37,6 +50,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="4dp"
+                android:layout_marginTop="10dp"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/pricetitle_tv"
                 android:id="@+id/oiltypeAlayout">
@@ -47,7 +61,7 @@
                     android:text="Oil Type A : Rs. "
                     android:gravity="center"
                     android:id="@+id/oiltypeAtv"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:textSize="16sp"
                     />
 
@@ -68,7 +82,7 @@
                     android:text="Oil Type B : Rs. "
                     android:gravity="center"
                     android:id="@+id/oiltypeBtv"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:textSize="16sp"
                     />
 
@@ -89,7 +103,7 @@
                     android:text="Oil Type C : Rs. "
                     android:gravity="center"
                     android:id="@+id/oiltypeCtv"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:textSize="16sp"
                     />
 
@@ -110,7 +124,7 @@
                     android:text="Oil Type D : Rs. "
                     android:gravity="center"
                     android:id="@+id/oiltypeDtv"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:textSize="16sp"
                     android:paddingBottom="14dp"
                     />
@@ -121,4 +135,4 @@
 
     </android.support.v7.widget.CardView>
 
-</LinearLayout>
+</RelativeLayout>

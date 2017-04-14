@@ -13,6 +13,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,7 +29,8 @@ import org.w3c.dom.Text;
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 
     EditText usernameet, phnoet, emailidet, pwd1et, pwd2et;
-    Button btnRegister, btnLoginAct;
+    Button btnRegister;
+    TextView logintv;
     private ProgressDialog progressDialog;
 
     private FirebaseAuth firebaseAuth;
@@ -54,10 +56,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         pwd1et = (EditText) findViewById(R.id.pwd1et);
         pwd2et = (EditText) findViewById(R.id.pwd2et);
         btnRegister = (Button) findViewById(R.id.btnRegister);
-        btnLoginAct = (Button) findViewById(R.id.btnLoginActivity);
+        logintv = (TextView) findViewById(R.id.signin_tv);
 
         btnRegister.setOnClickListener(this);
-        btnLoginAct.setOnClickListener(this);
+        logintv.setOnClickListener(this);
 
     }
 
@@ -66,7 +68,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         if(v==btnRegister){
             registerUser();
         }
-        if(v==btnLoginAct){
+        if(v==logintv){
             finish();
             startActivity(new Intent(this, LoginActivity.class));
         }
