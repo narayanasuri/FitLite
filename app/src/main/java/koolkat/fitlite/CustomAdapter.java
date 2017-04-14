@@ -51,7 +51,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
         viewHolder.oiltypetv.append(oilTypes.get(i));
         String quant = oilQuantitities.get(i).toString();
-        viewHolder.oilquantitytv.append(quant+" l");
+        viewHolder.oilquantitytv.append(quant+" litres");
         viewHolder.statustv.append(statuses.get(i));
     }
 
