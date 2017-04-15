@@ -52,10 +52,10 @@ public class HomeFragment extends Fragment {
                 final String typeCprice = dataSnapshot.child("oil3").getValue().toString();
                 final String typeDprice = dataSnapshot.child("oil4").getValue().toString();
 
-                type1tv.append(typeAprice+"/litre");
-                type2tv.append(typeBprice+"/litre");
-                type3tv.append(typeCprice+"/litre");
-                type4tv.append(typeDprice+"/litre");
+                type1tv.setText(typeAprice+"/litre");
+                type2tv.setText(typeBprice+"/litre");
+                type3tv.setText(typeCprice+"/litre");
+                type4tv.setText(typeDprice+"/litre");
             }
 
             @Override

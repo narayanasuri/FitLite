@@ -60,11 +60,19 @@
                     android:padding="4dp">
 
                     <TextView
-                        android:id="@+id/oiltypeAtv"
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@string/oil_type_a"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/oiltypeAtv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=""
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
 
@@ -80,14 +88,21 @@
                     android:padding="4dp">
 
                     <TextView
-                        android:id="@+id/oiltypeBtv"
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@string/oil_type_b"
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
-
+                    <TextView
+                        android:id="@+id/oiltypeBtv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=""
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -100,14 +115,21 @@
                     android:padding="4dp">
 
                     <TextView
-                        android:id="@+id/oiltypeCtv"
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@string/oil_type_c"
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
-
+                    <TextView
+                        android:id="@+id/oiltypeCtv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=""
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -120,7 +142,7 @@
                     android:padding="4dp">
 
                     <TextView
-                        android:id="@+id/oiltypeDtv"
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -128,7 +150,14 @@
                         android:text="@string/oil_type_d"
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
-
+                    <TextView
+                        android:id="@+id/oiltypeDtv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=""
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
             </RelativeLayout>
