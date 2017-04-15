@@ -1,5 +1,6 @@
 package koolkat.fitlite;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -25,7 +26,7 @@ public class HomeFragment extends Fragment {
 
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
-
+    ProgressDialog progressDialog;
     TextView type1tv, type2tv, type3tv, type4tv;
 
     public HomeFragment() {
@@ -43,6 +44,9 @@ public class HomeFragment extends Fragment {
 
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
+        progressDialog = new ProgressDialog(this.getContext());
+        progressDialog.setMessage("Retrieving Prices, Please Wait");
+        progressDialog.show();
 
         databaseReference.child("price").addValueEventListener(new ValueEventListener() {
             @Override
@@ -56,6 +60,7 @@ public class HomeFragment extends Fragment {
                 type2tv.setText(typeBprice+"/litre");
                 type3tv.setText(typeCprice+"/litre");
                 type4tv.setText(typeDprice+"/litre");
+                progressDialog.hide();
             }
 
             @Override
