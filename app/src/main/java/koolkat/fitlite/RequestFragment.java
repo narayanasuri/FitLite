@@ -163,7 +163,7 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
     public void a(int reqId) {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         reqId = reqId + 1;
-        orderid = "order" + reqId;
+        orderid = ""+reqId;
         OilRequest oilRequest = new OilRequest(reqId, oiltype, quantity, status,price);
         databaseReference.child("requests").child(user.getUid()).child("numberOfOrders").setValue(reqId);
         databaseReference.child("requests").child(user.getUid()).child("orders").child(orderid).setValue(oilRequest);

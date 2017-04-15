@@ -29,7 +29,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         TextView oiltypetv;
         TextView oilquantitytv;
         TextView statustv;
-        TextView pricec;
+        TextView pricetv;
 
 
         public ViewHolder(View itemView) {
@@ -37,7 +37,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             oiltypetv = (TextView) itemView.findViewById(R.id.card_oiltype);
             oilquantitytv = (TextView) itemView.findViewById(R.id.card_oilquantity);
             statustv = (TextView) itemView.findViewById(R.id.card_status);
-            pricec = (TextView) itemView.findViewById(R.id.pricec);
+            pricetv = (TextView) itemView.findViewById(R.id.card_price);
 
         }
     }
@@ -54,12 +54,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     @Override
     public void onBindViewHolder(CustomAdapter.ViewHolder viewHolder, int i) {
 
-        viewHolder.oiltypetv.append(oilTypes.get(i));
+        viewHolder.oiltypetv.setText("Oil : "+oilTypes.get(i));
         String quant = oilQuantitities.get(i).toString();
         String price = pricey.get(i).toString();
-        viewHolder.oilquantitytv.append(quant+" litres");
-        viewHolder.pricec.append("₹"+price+"/-");
-        viewHolder.statustv.append(statuses.get(i));
+        viewHolder.oilquantitytv.setText("Quantity : "+quant+" litres");
+        viewHolder.pricetv.setText("Price : ₹"+price+"/-");
+        viewHolder.statustv.setText("Status : "+statuses.get(i));
     }
 
     @Override
