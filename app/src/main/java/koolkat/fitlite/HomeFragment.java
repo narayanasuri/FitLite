@@ -47,6 +47,7 @@ public class HomeFragment extends Fragment {
         progressDialog = new ProgressDialog(this.getContext());
         progressDialog.setMessage("Retrieving Prices, Please Wait");
         progressDialog.show();
+        progressDialog.setCancelable(false);
 
         databaseReference.child("price").addValueEventListener(new ValueEventListener() {
             @Override

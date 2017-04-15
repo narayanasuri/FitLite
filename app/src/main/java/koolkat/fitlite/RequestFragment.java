@@ -174,7 +174,7 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
     public void b(){
         String alpha=quantityet.getText().toString();
         int x;
-        if(oiltype.equals(null))
+        if(oiltype==null)
             oiltype="";
         if(alpha.equals(""))
             x=0;
