@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        app:cardBackgroundColor="#222222"
+        app:cardBackgroundColor="#ffffff"
         android:id="@+id/register_layout"
         app:cardCornerRadius="16dp"
         app:cardElevation="16dp">
@@ -40,10 +40,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="6dp"
-                    android:backgroundTint="@android:color/white"
-                    android:foregroundTint="@android:color/white"
+                    android:backgroundTint="#222222"
+                    android:foregroundTint="#222222"
                     android:hint="Username"
-                    android:textColor="@android:color/white"
+                    android:textColor="#222222"
                     android:textColorHint="#D3D3D3"
                     android:textSize="18sp" />
 
@@ -59,11 +59,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="6dp"
-                    android:backgroundTint="@android:color/white"
-                    android:foregroundTint="@android:color/white"
+                    android:backgroundTint="#222222"
+                    android:foregroundTint="#222222"
                     android:hint="Phone Number"
                     android:inputType="phone"
-                    android:textColor="@android:color/white"
+                    android:textColor="#222222"
                     android:textColorHint="#808080"
                     android:textSize="18sp" />
 
@@ -79,10 +79,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="6dp"
-                    android:backgroundTint="@android:color/white"
-                    android:foregroundTint="@android:color/white"
+                    android:backgroundTint="#222222"
+                    android:foregroundTint="#222222"
                     android:hint="Email"
-                    android:textColor="@android:color/white"
+                    android:textColor="#222222"
                     android:textColorHint="#808080"
                     android:textSize="18sp" />
 
@@ -100,12 +100,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="6dp"
-                    android:backgroundTint="@android:color/white"
+                    android:backgroundTint="#222222"
                     android:ems="10"
-                    android:foregroundTint="@android:color/white"
+                    android:foregroundTint="#222222"
                     android:hint="Password"
                     android:inputType="textPassword"
-                    android:textColor="@android:color/white"
+                    android:textColor="#222222"
                     android:textColorHint="#808080"
                     android:textSize="18sp" />
 
@@ -123,12 +123,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="6dp"
-                    android:backgroundTint="@android:color/white"
+                    android:backgroundTint="#222222"
                     android:ems="10"
-                    android:foregroundTint="@android:color/white"
+                    android:foregroundTint="#222222"
                     android:hint="Confirm Password"
                     android:inputType="textPassword"
-                    android:textColor="@android:color/white"
+                    android:textColor="#222222"
                     android:textColorHint="#808080"
                     android:textSize="18sp" />
 
@@ -141,7 +141,7 @@
                 android:layout_margin="12dp"
                 android:background="@color/matYellow"
                 android:text="Submit"
-                android:textColor="@android:color/black" />
+                android:textColor="#ffffff" />
 
         </LinearLayout>
 
