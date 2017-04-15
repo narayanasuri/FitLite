@@ -9,7 +9,9 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,15 +19,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import org.w3c.dom.Text;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
-    Button btnLogin;
-    TextView registertv;
-    EditText emailet, passwordet;
+    Button btnLogin, btnforgotPassword;
+    TextView registertv, forgotPasswordtv, nvmtv;
+    EditText emailet, passwordet, forgotEmailet;
+    CardView loginCard, forgotPasswordCard;
 
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
@@ -38,12 +45,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
 
+        loginCard = (CardView) findViewById(R.id.login_layout);
+        forgotPasswordCard = (CardView) findViewById(R.id.forgotpassword_layout);
         registertv = (TextView) findViewById(R.id.signup_tv);
+        forgotPasswordtv = (TextView) findViewById(R.id.forgotpasswordtv);
+        nvmtv = (TextView) findViewById(R.id.nvmtv);
         btnLogin = (Button) findViewById(R.id.btnLogin);
+        btnforgotPassword = (Button) findViewById(R.id.btnforgotPassword);
+        forgotEmailet = (EditText) findViewById(R.id.forgotemailidet);
         emailet = (EditText) findViewById(R.id.emailidet);
         passwordet = (EditText) findViewById(R.id.passwordet);
         registertv.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
+        nvmtv.setOnClickListener(this);
+        forgotPasswordtv.setOnClickListener(this);
+        btnforgotPassword.setOnClickListener(this);
 
         if(firebaseAuth.getCurrentUser() != null){
             finish();
@@ -92,6 +108,39 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(v==btnLogin){
             userLogin();
         }
+
+        if(v==forgotPasswordtv){
+            registertv.setVisibility(View.GONE);
+            loginCard.setVisibility(View.GONE);
+            forgotPasswordCard.setVisibility(View.VISIBLE);
+        }
+
+        if(v==nvmtv){
+            forgotPasswordCard.setVisibility(View.GONE);
+            loginCard.setVisibility(View.VISIBLE);
+            registertv.setVisibility(View.VISIBLE);
+        }
+
+        if(v==btnforgotPassword){
+            forgotPasswordCard.setVisibility(View.GONE);
+            loginCard.setVisibility(View.VISIBLE);
+            registertv.setVisibility(View.VISIBLE);
+            String email = forgotEmailet.getText().toString();
+            firebaseAuth.sendPasswordResetEmail(email)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(getApplicationContext(), "An email has been sent to you!", Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(getApplicationContext(), "Something bad happened! Please try again!", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        }
+
     }
 
     private void registerAccount(){

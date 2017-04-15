@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="Prices may vary from time to time. Price of the oil while making the request is considered the price and the amount is calculated with respect to the same."
+            android:text="@string/priceslabel"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 

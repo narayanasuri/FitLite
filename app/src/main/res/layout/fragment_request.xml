@@ -33,7 +33,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:backgroundTint="@android:color/white"
-            android:foregroundTint="@android:color/white"></Spinner>
+            android:foregroundTint="@android:color/white">
+
+        </Spinner>
 
         <TextView
             android:layout_width="wrap_content"

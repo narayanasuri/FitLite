@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="2dp"
-            android:text="@string/oil"
+            android:text="Oil : "
             android:textColor="@android:color/white"
             android:textSize="18sp" />
         <TextView
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="Price:"
+            android:text="Price : "
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="italic" />
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/card_oiltype"
             android:padding="2dp"
-            android:text="@string/quantity"
+            android:text="Quantity : "
             android:textColor="@android:color/white"
             android:textSize="17sp" />
 
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_below="@id/card_oiltype"
-            android:text="@string/status"
+            android:text="Status : "
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="italic" />

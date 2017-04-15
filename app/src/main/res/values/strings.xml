@@ -21,9 +21,6 @@
     <string name="oil_type_b">Oil Type B : ₹</string>
     <string name="oil_type_c">Oil Type C : ₹</string>
     <string name="oil_type_d">Oil Type D : ₹</string>
-    <string name="oil">Oil :</string>
-    <string name="price">Price :</string>
-    <string name="quantity">Quantity :</string>
-    <string name="status">Status : </string>
+    <string name="priceslabel">"Prices may vary from time to time. Price of the oil while making the request is considered the price at the particular time period and the amount is calculated with respect to the same."</string>
     <string name="select_an_oil_type">SELECT AN OIL TYPE</string>
 </resources>
