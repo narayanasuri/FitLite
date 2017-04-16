@@ -29,7 +29,7 @@ public class Profile extends AppCompatActivity {
     EditText name,mobile;
     TextView email;
     Button edit;
-    String username,phone,femail;
+    String username,phone,femail,un;
     int x=1;
     private FirebaseUser user;
     private DatabaseReference databaseReference;
@@ -67,6 +67,8 @@ public class Profile extends AppCompatActivity {
                 else{
                     username=name.getText().toString();
                     phone=mobile.getText().toString();
+                    databaseReference.child("userids").child(un).removeValue();
+                    databaseReference.child("userids").child(username).setValue(user.getUid());
                     databaseReference.child("Users").child(user.getUid()).child("username").setValue(username);
                     databaseReference.child("Users").child(user.getUid()).child("phonenumber").setValue(phone);
                     edit.setText("Edit");
@@ -88,6 +90,7 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 username = dataSnapshot.child("username").getValue().toString();
+                un=username;
                 phone = dataSnapshot.child("phonenumber").getValue().toString();name.setText(username);
                 name.setText(username);
                 mobile.setText(phone);
@@ -96,6 +99,7 @@ public class Profile extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+
     }
     public void b()
     {
