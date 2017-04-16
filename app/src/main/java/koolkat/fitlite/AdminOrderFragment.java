@@ -70,7 +70,7 @@ public class AdminOrderFragment extends Fragment {
                 type2tv.setText(typeBprice+"/litre");
                 type3tv.setText(typeCprice+"/litre");
                 type4tv.setText(typeDprice+"/litre");
-                progressDialog.hide();
+                progressDialog.dismiss();
             }
 
             @Override
@@ -120,7 +120,7 @@ public class AdminOrderFragment extends Fragment {
                     type4tv.setText(typeDprice+"/litre");
                     x++;
                     Toast.makeText(getContext(), "Data Saved", Toast.LENGTH_SHORT).show();
-                    progressDialog.hide();
+                    progressDialog.dismiss();
                 }
             }
         });

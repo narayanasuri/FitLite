@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(firebaseAuth.getCurrentUser() != null){
             finish();
             String email = firebaseAuth.getCurrentUser().getEmail();
-            if(email.matches("(?i)narayanasuri08@gmail.com|kushagra12mangal@gmail.com")){
+            if(email.matches("narayanasuri08@gmail.com")){
                 Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
                 Toast.makeText(getApplicationContext(), "Login Successful!", Toast.LENGTH_SHORT).show();
                 finish();
@@ -103,7 +103,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                        progressDialog.dismiss();
 
                         if(task.isSuccessful()){
-                            if(email.matches("(?i)narayanasuri08@gmail.com|kushagra12mangal@gmail.com")){
+                            if(email.matches("narayanasuri08@gmail.com")){
                                 Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
                                 Toast.makeText(getApplicationContext(), "Admin Login Successful!", Toast.LENGTH_SHORT).show();
                                 finish();

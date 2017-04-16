@@ -98,9 +98,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                             if(task.isSuccessful()){
                                 progressDialog.dismiss();
                                 Toast.makeText(RegisterActivity.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
-                                UserInformation userInformation = new UserInformation(username,phonenumber);
-
+                                UserInformation userInformation = new UserInformation(0, username,phonenumber);
                                 FirebaseUser user = firebaseAuth.getCurrentUser();
+                                databaseReference.child("userids").child(username).setValue(user.getUid());
                                 databaseReference.child("Users").child(user.getUid()).setValue(userInformation);
                                 databaseReference.child("requests").child(user.getUid()).child("numberOfOrders").setValue(0);
                             }

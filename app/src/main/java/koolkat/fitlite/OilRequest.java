@@ -12,6 +12,7 @@ public class OilRequest {
     public String status;
     public int price;
     public OilRequest() {
+
     }
 
     public OilRequest(int requestId, String oilType, int oilQuantity, String status,int price) {

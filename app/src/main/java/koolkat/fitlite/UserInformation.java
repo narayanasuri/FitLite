@@ -6,7 +6,7 @@ package koolkat.fitlite;
 
 public class UserInformation {
 
-    public String id;
+    public int numberOfOrders;
     public String username;
     public String phonenumber;
 
@@ -14,10 +14,13 @@ public class UserInformation {
 
     }
 
-    public UserInformation(String username, String phonenumber) {
+    public UserInformation(int numberOfOrders, String username, String phonenumber) {
+        this.numberOfOrders = numberOfOrders;
         this.username = username;
         this.phonenumber = phonenumber;
     }
+
+    public  int getNumberOfOrders(){ return numberOfOrders; }
 
     public String getUsername() {
         return username;

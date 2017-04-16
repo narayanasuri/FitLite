@@ -90,6 +90,7 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
 
             }
         });
+
         databaseReference.child("requests").child(user.getUid()).child("orders").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -165,6 +166,7 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
         reqId = reqId + 1;
         orderid = ""+reqId;
         OilRequest oilRequest = new OilRequest(reqId, oiltype, quantity, status,price);
+        databaseReference.child("Users").child(user.getUid()).child("numberOfOrders").setValue(reqId);
         databaseReference.child("requests").child(user.getUid()).child("numberOfOrders").setValue(reqId);
         databaseReference.child("requests").child(user.getUid()).child("orders").child(orderid).setValue(oilRequest);
         progressDialog.dismiss();

@@ -73,6 +73,7 @@ public class OrderFragment extends Fragment {
                     statuses.add(oilRequest.getStatus());
                     pricey.add(oilRequest.getPrice());
                 }
+
                 recyclerView.setHasFixedSize(true);
 
                 layoutManager = new LinearLayoutManager(getContext());
