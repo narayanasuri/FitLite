@@ -1,16 +1,194 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:layout_gravity="center_horizontal"
-        android:text="Orders Fragment"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/pricestv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+
+            android:text="@string/priceslabel"
+            android:textColor="#222222"
+            android:textSize="18sp" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/prices_card"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pricestv"
+            android:layout_centerHorizontal="true"
+            android:elevation="3dp"
+            android:padding="16dp"
+            card_view:cardBackgroundColor="@color/matYellow"
+            card_view:cardCornerRadius="4dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/pricetitle_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:paddingTop="14dp"
+                    android:text="PRICES TODAY"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/oiltypeAlayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pricetitle_tv"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/oil_type_a"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+                    <EditText
+                        android:id="@+id/oiltypeAtv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@android:color/transparent"
+                        android:text=""
+                        android:inputType="text"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/oiltypeBlayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/oiltypeAlayout"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/oil_type_b"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+                    <EditText
+                        android:id="@+id/oiltypeBtv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=""
+                        android:background="@android:color/transparent"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/oiltypeClayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/oiltypeBlayout"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/oil_type_c"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+                    <EditText
+                        android:id="@+id/oiltypeCtv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=""
+                        android:background="@android:color/transparent"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/oiltypeDlayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/oiltypeClayout"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingBottom="14dp"
+                        android:text="@string/oil_type_d"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+                    <EditText
+                        android:id="@+id/oiltypeDtv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=""
+                        android:background="@android:color/transparent"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:id="@+id/line"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_below="@id/prices_card"
+            android:background="#ACACAC"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edit"
+            android:layout_below="@id/line"
+            android:id="@+id/editbutton"
+            android:layout_marginTop="20dp"
+            android:background="#ffffff"
+            android:textColor="#222222"
+            />
+
+    </RelativeLayout>
+
+</android.support.v4.widget.NestedScrollView>
