@@ -1,27 +1,30 @@
 package koolkat.fitlite;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.design.widget.TabLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class UserActivity extends AppCompatActivity {
-
-    private FirebaseAuth firebaseAuth;
+public class AdminActivity extends AppCompatActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -38,28 +41,29 @@ public class UserActivity extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user);
+        setContentView(R.layout.activity_admin);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_admin);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager = (ViewPager) findViewById(R.id.container_admin);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-        mViewPager.setCurrentItem(1);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs_admin);
         tabLayout.setupWithViewPager(mViewPager);
-        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.main_content);
+
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.main_content_admin);
 
         if(firebaseAuth.getCurrentUser() == null){
             finish();
@@ -72,7 +76,7 @@ public class UserActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_user, menu);
+        getMenuInflater().inflate(R.menu.menu_admin, menu);
         return true;
     }
 
@@ -91,13 +95,10 @@ public class UserActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             return true;
         }
-        if (id == R.id.action_profile) {
-            startActivity(new Intent(getApplicationContext(), Profile.class));
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
+
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -113,34 +114,32 @@ public class UserActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position){
                 case 0:
-                    RequestFragment requestFragment = new RequestFragment();
-                    return requestFragment;
+                    AdminOrderFragment adminOrderFragment = new AdminOrderFragment();
+                    return adminOrderFragment;
+
                 case 1:
-                    HomeFragment homeFragment = new HomeFragment();
-                    return homeFragment;
-                case 2:
-                    OrderFragment orderFragment = new OrderFragment();
-                    return orderFragment;
+                    AdminStatsFragment adminStatsFragment = new AdminStatsFragment();
+                    return adminStatsFragment;
+
                 default:
                     return null;
+
             }
         }
 
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 2;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "REQUEST";
-                case 1:
-                    return "HOME";
-                case 2:
                     return "ORDERS";
+                case 1:
+                    return "STATS";
             }
             return null;
         }

@@ -63,12 +63,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         if(firebaseAuth.getCurrentUser() != null){
             finish();
-            startActivity(new Intent(this, UserActivity.class));
+            String email = firebaseAuth.getCurrentUser().getEmail();
+            if(email.equalsIgnoreCase("narayanasuri08@gmail.com")){
+                Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
+                Toast.makeText(getApplicationContext(), "Login Successful!", Toast.LENGTH_SHORT).show();
+                finish();
+                startActivity(intent);
+            }
+            else {
+                Intent intent = new Intent(getApplicationContext(), UserActivity.class);
+                Toast.makeText(getApplicationContext(), "Login Successful!", Toast.LENGTH_SHORT).show();
+                finish();
+                startActivity(intent);
+            }
         }
     }
 
     private void userLogin(){
-        String email = emailet.getText().toString().trim();
+        final String email = emailet.getText().toString().trim();
         String pwd = passwordet.getText().toString().trim();
 
         if(TextUtils.isEmpty(email)){
@@ -91,8 +103,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                        progressDialog.dismiss();
 
                         if(task.isSuccessful()){
-                            finish();
-                            startActivity(new Intent(getApplicationContext(), UserActivity.class));
+                            if(email.equalsIgnoreCase("narayanasuri08@gmail.com")){
+                                Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
+                                Toast.makeText(getApplicationContext(), "Login Successful!", Toast.LENGTH_SHORT).show();
+                                finish();
+                                startActivity(intent);
+                            }
+                            else {
+                                Intent intent = new Intent(getApplicationContext(), UserActivity.class);
+                                Toast.makeText(getApplicationContext(), "Login Successful!", Toast.LENGTH_SHORT).show();
+                                finish();
+                                startActivity(intent);
+                            }
                         }
                         else
                             Toast.makeText(getApplicationContext(), "Login Failed! Please try again!", Toast.LENGTH_SHORT).show();
