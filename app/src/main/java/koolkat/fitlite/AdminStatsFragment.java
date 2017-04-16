@@ -116,9 +116,10 @@ public class AdminStatsFragment extends Fragment {
                     final int i = rv.getChildAdapterPosition(child);
 
                     String usrname = usernames.get(i);
-
+                    String phone=phonenumbers.get(i);
                     Intent intent = new Intent(getContext(), AdminOrderViewActivity.class);
                     intent.putExtra("username", usrname);
+                    intent.putExtra("phone",phone);
                     startActivity(intent);
                 }
                 return false;

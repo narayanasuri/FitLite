@@ -5,11 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:background="@color/matYellow">
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        android:text="Name:"
+        android:textColor="#ffffff"
+        android:gravity="center_vertical"
+        android:id="@+id/name1"
+        android:padding="20dp"/>
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:text="Mobile:"
+            android:autoLink="phone"
+            android:textColor="#ffffff"
+            android:gravity="center_vertical"
+            android:id="@+id/phone1"
+            android:padding="20dp"/>
+
+    </LinearLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/admin_order_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
         android:scrollbars="vertical" />
 
 </LinearLayout>

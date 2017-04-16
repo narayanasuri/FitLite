@@ -1,8 +1,12 @@
 package koolkat.fitlite;
 
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -13,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -44,6 +49,7 @@ public class AdminOrderViewActivity extends AppCompatActivity {
 
     private final List<OilRequest> oilRequestsList = new ArrayList<>();
     private String username;
+    private String phone;
 
     public AdminOrderViewActivity() {
 
@@ -59,9 +65,13 @@ public class AdminOrderViewActivity extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference();
 
         username = getIntent().getStringExtra("username");
+        phone = getIntent().getStringExtra("phone");
+        TextView a = (TextView) findViewById(R.id.name1);
+        TextView b = (TextView) findViewById(R.id.phone1);
+        a.setText("Name:" + username);
+        b.setText("Mobile:" + phone);
 
         recyclerView.setHasFixedSize(true);
-
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -110,4 +120,5 @@ public class AdminOrderViewActivity extends AppCompatActivity {
         });
 
     }
+
 }

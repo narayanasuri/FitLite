@@ -1,8 +1,10 @@
 package koolkat.fitlite;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -62,6 +64,10 @@ public class AdminActivity extends AppCompatActivity {
         if(firebaseAuth.getCurrentUser() == null){
             finish();
             startActivity(new Intent(this, LoginActivity.class));
+        }
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+
+            return;
         }
 
     }
