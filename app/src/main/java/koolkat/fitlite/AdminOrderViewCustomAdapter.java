@@ -57,6 +57,7 @@ public class AdminOrderViewCustomAdapter extends RecyclerView.Adapter<AdminOrder
         holder.oiltypetv.setText(oiltype);
         holder.quantitytv.setText(quantity);
         holder.pricetv.setText(price);
+
     }
 
     @Override

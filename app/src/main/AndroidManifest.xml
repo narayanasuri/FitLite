@@ -37,8 +37,9 @@
             />
         <activity
             android:name=".AdminActivity"
-            android:label="@string/title_activity_admin"
+            android:label="FitLite"
             android:theme="@style/AppTheme.NoActionBar"/>
+
     </application>
 
 </manifest>
