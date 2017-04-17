@@ -125,6 +125,11 @@ public class AdminActivity extends AppCompatActivity {
                     AdminStatsFragment adminStatsFragment = new AdminStatsFragment();
                     return adminStatsFragment;
 
+                case 2:
+                    AdminconStatsFragment adminconStatsFragment = new AdminconStatsFragment();
+                    return adminconStatsFragment;
+
+
                 default:
                     return null;
 
@@ -134,7 +139,7 @@ public class AdminActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 2;
+            return 3;
         }
 
         @Override
@@ -144,6 +149,8 @@ public class AdminActivity extends AppCompatActivity {
                     return "ORDERS";
                 case 1:
                     return "STATS";
+                case 2:
+                    return "CONFIRMED";
             }
             return null;
         }

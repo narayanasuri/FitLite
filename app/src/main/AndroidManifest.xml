@@ -35,6 +35,9 @@
         <activity android:name=".AdminOrderViewActivity"
             android:label="View Orders"
             />
+        <activity android:name=".AdminconOrderViewActivity"
+            android:label="View Confirmed Orders"
+            />
         <activity
             android:name=".AdminActivity"
             android:label="FitLite"
