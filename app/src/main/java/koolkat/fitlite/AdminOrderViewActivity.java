@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -146,20 +148,27 @@ public class AdminOrderViewActivity extends Activity {
                             .setPositiveButton("Approve", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    databaseReference.child("requests").child(uid).child("orders").child(i+"").child("status").setValue("Approved");
+                                    int pos = i+1;
+                                    databaseReference.child("requests").child(uid).child("orders").child(pos+"").child("status").setValue("Approved");
                                     Toast.makeText(getApplicationContext(), "Order Approved!", Toast.LENGTH_SHORT).show();
                                 }
                             })
                             .setNegativeButton("Deny", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    databaseReference.child("requests").child(uid).child("orders").child(i+"").child("status").setValue("Denied");
+                                    int pos = i+1;
+                                    databaseReference.child("requests").child(uid).child("orders").child(pos+"").child("status").setValue("Denied");
                                     Toast.makeText(getApplicationContext(), "Order Denied!", Toast.LENGTH_SHORT).show();
                                 }
                             });
                     AlertDialog alert = a_builder.create();
                     alert.setTitle("Order Confirmation");
                     alert.show();
+                    Button nbutton = alert.getButton(DialogInterface.BUTTON_NEGATIVE);
+                    nbutton.setTextColor(ContextCompat.getColor(AdminOrderViewActivity.this, R.color.colorPrimaryDark));
+                    Button pbutton = alert.getButton(DialogInterface.BUTTON_POSITIVE);
+                    pbutton.setTextColor(ContextCompat.getColor(AdminOrderViewActivity.this, R.color.colorPrimaryDark));
+
 
                 }
                 return false;
