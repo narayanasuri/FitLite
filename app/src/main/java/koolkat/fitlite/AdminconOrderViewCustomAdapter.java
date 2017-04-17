@@ -31,6 +31,7 @@ public class AdminconOrderViewCustomAdapter extends RecyclerView.Adapter<Adminco
         TextView oiltypetv;
         TextView quantitytv;
         TextView pricetv;
+        TextView statustv;
 
 
         public ViewHolder(View itemView) {
@@ -38,6 +39,7 @@ public class AdminconOrderViewCustomAdapter extends RecyclerView.Adapter<Adminco
             oiltypetv = (TextView) itemView.findViewById(R.id.ordercard_oil);
             quantitytv = (TextView) itemView.findViewById(R.id.ordercard_quantity);
             pricetv = (TextView) itemView.findViewById(R.id.ordercard_price);
+            statustv = (TextView) itemView.findViewById(R.id.ordercard_status);
         }
     }
 
@@ -55,9 +57,11 @@ public class AdminconOrderViewCustomAdapter extends RecyclerView.Adapter<Adminco
         String oiltype = "Oil : "+oilTypes.get(position);
         String quantity = "Quantity : "+quantities.get(position).toString()+" litres";
         String price = "Price : ₹"+prices.get(position).toString();
+            String stat = "Status : "+status.get(position).toString();
         holder.oiltypetv.setText(oiltype);
         holder.quantitytv.setText(quantity);
         holder.pricetv.setText(price);
+            holder.statustv.setText(stat);
     }
 
     }

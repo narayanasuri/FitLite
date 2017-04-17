@@ -6,9 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
-    card_view:cardElevation="4dp"
+    card_view:cardElevation="16dp"
     card_view:cardBackgroundColor="@color/matYellow"
-    card_view:cardCornerRadius="5dp">
+    card_view:cardCornerRadius="8dp">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -23,15 +23,6 @@
             android:text="Oil : "
             android:textColor="@android:color/white"
             android:textSize="18sp" />
-        <TextView
-            android:id="@+id/card_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:text="Price : "
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:textStyle="italic" />
 
         <TextView
             android:id="@+id/card_oilquantity"
@@ -44,14 +35,25 @@
             android:textSize="17sp" />
 
         <TextView
+            android:id="@+id/card_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/card_oilquantity"
+            android:padding="2dp"
+            android:text="Price : "
+            android:textColor="@android:color/white"
+            android:textSize="17sp"/>
+
+        <TextView
             android:id="@+id/card_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
             android:layout_below="@id/card_oiltype"
             android:text="Status : "
             android:textColor="@android:color/white"
-            android:textSize="16sp"
+            android:textSize="17sp"
             android:textStyle="italic" />
 
     </RelativeLayout>

@@ -52,6 +52,7 @@ public class AdminOrderViewActivity extends Activity {
     final private List<String> oilTypes = new ArrayList<String>();
     final private List<Integer> quantities = new ArrayList<Integer>();
     final private List<Integer> prices = new ArrayList<Integer>();
+    final private List<String> statuses = new ArrayList<String>();
 
     private final List<OilRequest> oilRequestsList = new ArrayList<>();
     private String username;
@@ -83,7 +84,7 @@ public class AdminOrderViewActivity extends Activity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        adapter = new AdminOrderViewCustomAdapter(oilTypes, quantities, prices);
+        adapter = new AdminOrderViewCustomAdapter(oilTypes, quantities, prices, statuses);
 
         recyclerView.setAdapter(adapter);
 
@@ -95,6 +96,8 @@ public class AdminOrderViewActivity extends Activity {
 
                 oilTypes.clear();
                 quantities.clear();
+                prices.clear();
+                statuses.clear();
                 uid = dataSnapshot.child("userids").child(username).getValue().toString();
                 Iterable<DataSnapshot> oilInformation = dataSnapshot.child("requests").child(uid).child("orders").getChildren();
                 for(DataSnapshot info : oilInformation){
@@ -103,6 +106,7 @@ public class AdminOrderViewActivity extends Activity {
                     oilTypes.add(oilRequest.getOilType());
                     quantities.add(oilRequest.getOilQuantity());
                     prices.add(oilRequest.getPrice());
+                    statuses.add(oilRequest.getStatus());
 
                     recyclerView.setHasFixedSize(true);
 
@@ -110,7 +114,7 @@ public class AdminOrderViewActivity extends Activity {
                     recyclerView.setLayoutManager(layoutManager);
                     recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-                    adapter = new AdminOrderViewCustomAdapter(oilTypes, quantities, prices);
+                    adapter = new AdminOrderViewCustomAdapter(oilTypes, quantities, prices, statuses);
 
                     recyclerView.setAdapter(adapter);
 
@@ -168,7 +172,6 @@ public class AdminOrderViewActivity extends Activity {
                     nbutton.setTextColor(ContextCompat.getColor(AdminOrderViewActivity.this, R.color.colorPrimaryDark));
                     Button pbutton = alert.getButton(DialogInterface.BUTTON_POSITIVE);
                     pbutton.setTextColor(ContextCompat.getColor(AdminOrderViewActivity.this, R.color.colorPrimaryDark));
-
 
                 }
                 return false;

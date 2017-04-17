@@ -20,24 +20,27 @@ public class AdminOrderViewCustomAdapter extends RecyclerView.Adapter<AdminOrder
     private List<String> oilTypes = new ArrayList<>();
     private List<Integer> quantities = new ArrayList<>();
     private List<Integer> prices = new ArrayList<>();
+    private List<String> statuses = new ArrayList<>();
 
-    public AdminOrderViewCustomAdapter(List<String> oilTypes, List<Integer> quantities, List<Integer> prices) {
+    public AdminOrderViewCustomAdapter(List<String> oilTypes, List<Integer> quantities, List<Integer> prices, List<String> statuses) {
         this.oilTypes = oilTypes;
         this.quantities = quantities;
         this.prices = prices;
+        this.statuses = statuses;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView oiltypetv;
         TextView quantitytv;
         TextView pricetv;
-
+        TextView statustv;
 
         public ViewHolder(View itemView) {
             super(itemView);
             oiltypetv = (TextView) itemView.findViewById(R.id.ordercard_oil);
             quantitytv = (TextView) itemView.findViewById(R.id.ordercard_quantity);
             pricetv = (TextView) itemView.findViewById(R.id.ordercard_price);
+            statustv = (TextView) itemView.findViewById(R.id.ordercard_status);
         }
     }
 
@@ -54,9 +57,11 @@ public class AdminOrderViewCustomAdapter extends RecyclerView.Adapter<AdminOrder
         String oiltype = "Oil : "+oilTypes.get(position);
         String quantity = "Quantity : "+quantities.get(position).toString()+" litres";
         String price = "Price : ₹"+prices.get(position).toString();
+        String status = "Status : "+statuses.get(position).toString();
         holder.oiltypetv.setText(oiltype);
         holder.quantitytv.setText(quantity);
         holder.pricetv.setText(price);
+        holder.statustv.setText(status);
 
     }
 

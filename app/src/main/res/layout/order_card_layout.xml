@@ -6,8 +6,8 @@
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
     card_view:cardBackgroundColor="@color/matYellow"
-    card_view:cardCornerRadius="5dp"
-    card_view:cardElevation="4dp">
+    card_view:cardCornerRadius="8dp"
+    card_view:cardElevation="16dp">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="2dp"
-            android:text="Phonr Number :  "
+            android:text="Phone Number :  "
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
