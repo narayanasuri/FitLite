@@ -58,6 +58,8 @@ public class AdminOrderViewActivity extends Activity {
     private String username;
     private String phone;
     String uid;
+    int x,confirmed,litres,price,oilQuantity;
+
 
     public AdminOrderViewActivity() {
 
@@ -155,6 +157,39 @@ public class AdminOrderViewActivity extends Activity {
                                 public void onClick(DialogInterface dialog, int which) {
                                     int pos = i+1;
                                     databaseReference.child("requests").child(uid).child("orders").child(pos+"").child("status").setValue("Approved");
+                                    databaseReference.child("calc").child(uid).addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                           confirmed = Integer.parseInt( dataSnapshot.child("confirmedOrders").getValue().toString());
+                                           litres = Integer.parseInt( dataSnapshot.child("numberOfLitres").getValue().toString());
+                                           x = Integer.parseInt( dataSnapshot.child("price").getValue().toString());
+                                        }
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                    databaseReference.child("requests").child(uid).child("orders").child(pos+"").addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                            price = Integer.parseInt( dataSnapshot.child("price").getValue().toString());
+                                            oilQuantity=Integer.parseInt( dataSnapshot.child("oilQuantity").getValue().toString());
+                                        }
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                    confirmed+=1;
+                                    databaseReference.child("calc").child(uid).child("confirmedOrders").setValue(""+confirmed);
+                                    litres+=oilQuantity;
+                                    databaseReference.child("calc").child(uid).child("numberOfLitres").setValue(""+litres);
+                                    int y=litres/26;
+                                    y-=x;
+                                    int a=price/oilQuantity;
+                                    price=((oilQuantity-y)*a)+(y*15);
+                                    databaseReference.child("requests").child(uid).child("orders").child(pos+"").child("price").setValue(""+price);
+                                    databaseReference.child("calc").child(uid).child("price").setValue(""+x+y);
                                     Toast.makeText(getApplicationContext(), "Order Approved!", Toast.LENGTH_SHORT).show();
                                 }
                             })
