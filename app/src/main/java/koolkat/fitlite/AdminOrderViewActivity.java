@@ -103,6 +103,7 @@ public class AdminOrderViewActivity extends Activity {
                 for(DataSnapshot info : oilInformation){
                     OilRequest oilRequest = info.getValue(OilRequest.class);
                     oilRequestsList.add(oilRequest);
+                    if(oilRequest.getStatus().equals("Pending")||oilRequest.getStatus().equals("Denied")){
                     oilTypes.add(oilRequest.getOilType());
                     quantities.add(oilRequest.getOilQuantity());
                     prices.add(oilRequest.getPrice());
@@ -118,7 +119,7 @@ public class AdminOrderViewActivity extends Activity {
 
                     recyclerView.setAdapter(adapter);
 
-                    ViewCompat.setNestedScrollingEnabled(recyclerView, true);
+                    ViewCompat.setNestedScrollingEnabled(recyclerView, true);}
 
                 }
 
