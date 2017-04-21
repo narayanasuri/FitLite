@@ -1,4 +1,5 @@
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,29 +11,19 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     >
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:focusable="true"
+        android:orientation="vertical"
         android:focusableInTouchMode="true">
-
-        <TextView
-            android:id="@+id/pricestv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-
-            android:text="@string/priceslabel"
-            android:textColor="#222222"
-            android:textSize="18sp" />
 
         <android.support.v7.widget.CardView
             android:id="@+id/prices_card"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/pricestv"
-            android:layout_centerHorizontal="true"
-            android:elevation="3dp"
+            android:layout_gravity="center_horizontal"
+            card_view:cardElevation="16dp"
             android:padding="16dp"
             card_view:cardBackgroundColor="@color/matYellow"
             card_view:cardCornerRadius="4dp">
@@ -70,14 +61,12 @@
                         android:text="@string/oil_type_a"
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
-                    <EditText
+                    <TextView
                         android:id="@+id/oiltypeAtv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:background="@android:color/transparent"
                         android:text=""
-                        android:inputType="none"
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
 
@@ -100,14 +89,12 @@
                         android:text="@string/oil_type_b"
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
-                    <EditText
+                    <TextView
                         android:id="@+id/oiltypeBtv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text=""
-                        android:inputType="none"
-                        android:background="@android:color/transparent"
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -129,14 +116,12 @@
                         android:text="@string/oil_type_c"
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
-                    <EditText
+                    <TextView
                         android:id="@+id/oiltypeCtv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text=""
-                        android:inputType="none"
-                        android:background="@android:color/transparent"
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -159,14 +144,12 @@
                         android:text="@string/oil_type_d"
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
-                    <EditText
+                    <TextView
                         android:id="@+id/oiltypeDtv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text=""
-                        android:inputType="none"
-                        android:background="@android:color/transparent"
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -174,26 +157,50 @@
             </RelativeLayout>
 
         </android.support.v7.widget.CardView>
-        <View
+
+        <EditText
             android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:id="@+id/line"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:layout_below="@id/prices_card"
-            android:background="#ACACAC"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:padding="16dp"
+            android:id="@+id/oiltypeAet"
+            android:hint="Oil Type A"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:id="@+id/oiltypeBet"
+            android:hint="Oil Type B"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:id="@+id/oiltypeCet"
+            android:hint="Oil Type C"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:id="@+id/oiltypeDet"
+            android:hint="Oil Type D"
+            />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Edit"
-            android:layout_below="@id/line"
             android:id="@+id/editbutton"
             android:layout_marginTop="20dp"
-            android:background="#ffffff"
+            android:background="@color/matYellow"
             android:textColor="#222222"
             />
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

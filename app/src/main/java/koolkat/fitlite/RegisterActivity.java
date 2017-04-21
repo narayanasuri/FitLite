@@ -103,6 +103,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                 databaseReference.child("userids").child(username).setValue(user.getUid());
                                 databaseReference.child("Users").child(user.getUid()).setValue(userInformation);
                                 databaseReference.child("requests").child(user.getUid()).child("numberOfOrders").setValue(0);
+                                databaseReference.child("calc").child(user.getUid()).child("numberOfLitres").setValue(0);
+                                databaseReference.child("calc").child(user.getUid()).child("price").setValue(0);
+                                databaseReference.child("calc").child(user.getUid()).child("confirmedOrders").setValue(0);
                             }
                             else{
                                 progressDialog.dismiss();

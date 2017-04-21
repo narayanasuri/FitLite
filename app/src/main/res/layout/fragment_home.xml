@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/pricestv"
             android:layout_centerHorizontal="true"
-            android:elevation="3dp"
+            card_view:cardElevation="16dp"
             android:padding="16dp"
             card_view:cardBackgroundColor="@color/matYellow"
             card_view:cardCornerRadius="4dp">

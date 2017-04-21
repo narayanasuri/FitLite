@@ -22,6 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 /**
  * Created by Admin on 4/13/2017.
  */
@@ -32,7 +34,8 @@ public class AdminOrderFragment extends Fragment {
     private FirebaseUser user;
     private DatabaseReference databaseReference;
     ProgressDialog progressDialog;
-    EditText type1tv, type2tv, type3tv, type4tv;
+    TextView type1tv, type2tv, type3tv, type4tv;
+    EditText type1et, type2et, type3et, type4et;
     Button edit;
     String typeAprice,typeBprice,typeCprice,typeDprice;
     int x=1;
@@ -45,11 +48,15 @@ public class AdminOrderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_admin_order, container, false);
-        type1tv = (EditText) view.findViewById(R.id.oiltypeAtv);
-        type2tv = (EditText) view.findViewById(R.id.oiltypeBtv);
-        type3tv = (EditText) view.findViewById(R.id.oiltypeCtv);
-        type4tv = (EditText) view.findViewById(R.id.oiltypeDtv);
-        type1tv.setEnabled(false);type2tv.setEnabled(false);type3tv.setEnabled(false);type4tv.setEnabled(false);
+        type1tv = (TextView) view.findViewById(R.id.oiltypeAtv);
+        type2tv = (TextView) view.findViewById(R.id.oiltypeBtv);
+        type3tv = (TextView) view.findViewById(R.id.oiltypeCtv);
+        type4tv = (TextView) view.findViewById(R.id.oiltypeDtv);
+        type1et = (EditText) view.findViewById(R.id.oiltypeAet);
+        type2et = (EditText) view.findViewById(R.id.oiltypeBet);
+        type3et = (EditText) view.findViewById(R.id.oiltypeCet);
+        type4et = (EditText) view.findViewById(R.id.oiltypeDet);
+        type1et.setEnabled(false);type2et.setEnabled(false);type3et.setEnabled(false);type4et.setEnabled(false);
         edit=(Button) view.findViewById(R.id.editbutton);
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -70,6 +77,10 @@ public class AdminOrderFragment extends Fragment {
                 type2tv.setText(typeBprice+"/litre");
                 type3tv.setText(typeCprice+"/litre");
                 type4tv.setText(typeDprice+"/litre");
+                type1et.setText(typeAprice+"/litre");
+                type2et.setText(typeBprice+"/litre");
+                type3et.setText(typeCprice+"/litre");
+                type4et.setText(typeDprice+"/litre");
                 progressDialog.dismiss();
             }
 
@@ -84,15 +95,19 @@ public class AdminOrderFragment extends Fragment {
             public void onClick(View v) {
                 if(x%2==1){
                     edit.setText("Save");
-                    type1tv.setEnabled(true);type2tv.setEnabled(true);type3tv.setEnabled(true);type4tv.setEnabled(true);
+                    type1et.setEnabled(true);type2et.setEnabled(true);type3et.setEnabled(true);type4et.setEnabled(true);
                     type1tv.setText(typeAprice);
                     type2tv.setText(typeBprice);
                     type3tv.setText(typeCprice);
                     type4tv.setText(typeDprice);
-                    type1tv.setInputType(InputType.TYPE_CLASS_NUMBER);
-                    type2tv.setInputType(InputType.TYPE_CLASS_NUMBER);
-                    type3tv.setInputType(InputType.TYPE_CLASS_NUMBER);
-                    type4tv.setInputType(InputType.TYPE_CLASS_NUMBER);
+                    type1et.setText(typeAprice);
+                    type2et.setText(typeBprice);
+                    type3et.setText(typeCprice);
+                    type4et.setText(typeDprice);
+                    type1et.setInputType(InputType.TYPE_CLASS_NUMBER);
+                    type2et.setInputType(InputType.TYPE_CLASS_NUMBER);
+                    type3et.setInputType(InputType.TYPE_CLASS_NUMBER);
+                    type4et.setInputType(InputType.TYPE_CLASS_NUMBER);
                     Toast.makeText(getContext(), "Please edit the details", Toast.LENGTH_SHORT).show();
                     x++;
                 }
@@ -100,15 +115,15 @@ public class AdminOrderFragment extends Fragment {
                     progressDialog.setMessage("Submitting Prices, Please Wait");
                     progressDialog.show();
                     progressDialog.setCancelable(false);
-                    type1tv.setInputType(InputType.TYPE_CLASS_TEXT);
-                    type2tv.setInputType(InputType.TYPE_CLASS_TEXT);
-                    type3tv.setInputType(InputType.TYPE_CLASS_TEXT);
-                    type4tv.setInputType(InputType.TYPE_CLASS_TEXT);
-                    type1tv.setEnabled(false);type2tv.setEnabled(false);type3tv.setEnabled(false);type4tv.setEnabled(false);
-                    typeAprice=type1tv.getText().toString();
-                    typeBprice=type2tv.getText().toString();
-                    typeCprice=type3tv.getText().toString();
-                    typeDprice=type4tv.getText().toString();
+                    type1et.setInputType(InputType.TYPE_CLASS_TEXT);
+                    type2et.setInputType(InputType.TYPE_CLASS_TEXT);
+                    type3et.setInputType(InputType.TYPE_CLASS_TEXT);
+                    type4et.setInputType(InputType.TYPE_CLASS_TEXT);
+                    type1et.setEnabled(false);type2et.setEnabled(false);type3et.setEnabled(false);type4et.setEnabled(false);
+                    typeAprice=type1et.getText().toString();
+                    typeBprice=type2et.getText().toString();
+                    typeCprice=type3et.getText().toString();
+                    typeDprice=type4et.getText().toString();
                     databaseReference.child("price").child("oil1").setValue(typeAprice);
                     databaseReference.child("price").child("oil2").setValue(typeBprice);
                     databaseReference.child("price").child("oil3").setValue(typeCprice);
