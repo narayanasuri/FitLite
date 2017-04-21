@@ -2,25 +2,17 @@ package koolkat.fitlite;
 
 import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,7 +26,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Admin on 4/16/2017.
@@ -42,23 +33,22 @@ import java.util.Map;
 
 public class AdminOrderViewActivity extends Activity {
 
+    final private List<String> oilTypes = new ArrayList<String>();
+    final private List<Integer> quantities = new ArrayList<Integer>();
+    final private List<Integer> prices = new ArrayList<Integer>();
+    final private List<Integer> request = new ArrayList<Integer>();
+    final private List<String> statuses = new ArrayList<String>();
+    private final List<OilRequest> oilRequestsList = new ArrayList<>();
+    int confirmed, litres, x, price, oilQuantity, count;
+    String uid;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private AdminOrderViewCustomAdapter adapter;
-
-    final private List<String> oilTypes = new ArrayList<String>();
-    final private List<Integer> quantities = new ArrayList<Integer>();
-    final private List<Integer> prices = new ArrayList<Integer>();
-    final private List<String> statuses = new ArrayList<String>();
-
-    private final List<OilRequest> oilRequestsList = new ArrayList<>();
     private String username;
     private String phone;
-    String uid;
-    int x,confirmed,litres,price,oilQuantity;
 
 
     public AdminOrderViewActivity() {
@@ -92,47 +82,7 @@ public class AdminOrderViewActivity extends Activity {
 
         ViewCompat.setNestedScrollingEnabled(recyclerView, true);
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                oilTypes.clear();
-                quantities.clear();
-                prices.clear();
-                statuses.clear();
-                uid = dataSnapshot.child("userids").child(username).getValue().toString();
-                Iterable<DataSnapshot> oilInformation = dataSnapshot.child("requests").child(uid).child("orders").getChildren();
-                for(DataSnapshot info : oilInformation){
-                    OilRequest oilRequest = info.getValue(OilRequest.class);
-                    oilRequestsList.add(oilRequest);
-                    if(oilRequest.getStatus().equals("Pending")||oilRequest.getStatus().equals("Denied")){
-                    oilTypes.add(oilRequest.getOilType());
-                    quantities.add(oilRequest.getOilQuantity());
-                    prices.add(oilRequest.getPrice());
-                    statuses.add(oilRequest.getStatus());
-
-                    recyclerView.setHasFixedSize(true);
-
-                    layoutManager = new LinearLayoutManager(getApplicationContext());
-                    recyclerView.setLayoutManager(layoutManager);
-                    recyclerView.setItemAnimator(new DefaultItemAnimator());
-
-                    adapter = new AdminOrderViewCustomAdapter(oilTypes, quantities, prices, statuses);
-
-                    recyclerView.setAdapter(adapter);
-
-                    ViewCompat.setNestedScrollingEnabled(recyclerView, true);}
-
-                }
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
+        b();
         recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             GestureDetector gestureDetector = new GestureDetector(getApplicationContext(), new GestureDetector.SimpleOnGestureListener() {
 
@@ -155,49 +105,39 @@ public class AdminOrderViewActivity extends Activity {
                             .setPositiveButton("Approve", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    int pos = i+1;
-                                    databaseReference.child("requests").child(uid).child("orders").child(pos+"").child("status").setValue("Approved");
-                                    databaseReference.child("calc").child(uid).addValueEventListener(new ValueEventListener() {
+
+                                    final int pos = request.get(i);
+                                    count = 0;
+                                    databaseReference.addValueEventListener(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(DataSnapshot dataSnapshot) {
-                                           confirmed = Integer.parseInt( dataSnapshot.child("confirmedOrders").getValue().toString());
-                                           litres = Integer.parseInt( dataSnapshot.child("numberOfLitres").getValue().toString());
-                                           x = Integer.parseInt( dataSnapshot.child("price").getValue().toString());
+                                            if (count == 0) {
+                                                databaseReference.child("requests").child(uid).child("orders").child(pos + "").child("status").setValue("Approved");
+                                                confirmed = Integer.parseInt(dataSnapshot.child("calc").child(uid).child("confirmedOrders").getValue().toString());
+                                                litres = Integer.parseInt(dataSnapshot.child("calc").child(uid).child("numberOfLitres").getValue().toString());
+                                                x = Integer.parseInt(dataSnapshot.child("calc").child(uid).child("price").getValue().toString());
+                                                price = Integer.parseInt(dataSnapshot.child("requests").child(uid).child("orders").child(pos + "").child("price").getValue().toString());
+                                                oilQuantity = Integer.parseInt(dataSnapshot.child("requests").child(uid).child("orders").child(pos + "").child("oilQuantity").getValue().toString());
+                                                a(confirmed, litres, x, price, oilQuantity, pos);
+                                                count++;
+                                            }
                                         }
+
                                         @Override
                                         public void onCancelled(DatabaseError databaseError) {
 
                                         }
                                     });
-                                    databaseReference.child("requests").child(uid).child("orders").child(pos+"").addValueEventListener(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(DataSnapshot dataSnapshot) {
-                                            price = Integer.parseInt( dataSnapshot.child("price").getValue().toString());
-                                            oilQuantity=Integer.parseInt( dataSnapshot.child("oilQuantity").getValue().toString());
-                                        }
-                                        @Override
-                                        public void onCancelled(DatabaseError databaseError) {
-
-                                        }
-                                    });
-                                    confirmed+=1;
-                                    databaseReference.child("calc").child(uid).child("confirmedOrders").setValue(""+confirmed);
-                                    litres+=oilQuantity;
-                                    databaseReference.child("calc").child(uid).child("numberOfLitres").setValue(""+litres);
-                                    int y=litres/26;
-                                    y-=x;
-                                    int a=price/oilQuantity;
-                                    price=((oilQuantity-y)*a)+(y*15);
-                                    databaseReference.child("requests").child(uid).child("orders").child(pos+"").child("price").setValue(""+price);
-                                    databaseReference.child("calc").child(uid).child("price").setValue(""+x+y);
-                                    Toast.makeText(getApplicationContext(), "Order Approved!", Toast.LENGTH_SHORT).show();
+                                    b();
+                                    adapter.notifyDataSetChanged();
+                                    count = 0;
                                 }
                             })
                             .setNegativeButton("Deny", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    int pos = i+1;
-                                    databaseReference.child("requests").child(uid).child("orders").child(pos+"").child("status").setValue("Denied");
+                                    final int pos = request.get(i);
+                                    databaseReference.child("requests").child(uid).child("orders").child(pos + "").child("status").setValue("Denied");
                                     Toast.makeText(getApplicationContext(), "Order Denied!", Toast.LENGTH_SHORT).show();
                                 }
                             });
@@ -226,4 +166,63 @@ public class AdminOrderViewActivity extends Activity {
 
     }
 
+    void a(int confirmed, int litres, int x, int price, int oilQuantity, int pos) {
+        confirmed += 1;
+        databaseReference.child("calc").child(uid).child("confirmedOrders").setValue(confirmed);
+        litres += oilQuantity;
+        databaseReference.child("calc").child(uid).child("numberOfLitres").setValue(litres);
+        int y = litres / 26;
+        y -= x;
+        int a = price / oilQuantity;
+        price = ((oilQuantity - y) * a) + (y * 15);
+        databaseReference.child("requests").child(uid).child("orders").child(pos + "").child("price").setValue(price);
+        databaseReference.child("calc").child(uid).child("price").setValue(x + y);
+        Toast.makeText(getApplicationContext(), "Order Approved!", Toast.LENGTH_SHORT).show();
+    }
+
+    void b() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                request.clear();
+                oilTypes.clear();
+                quantities.clear();
+                prices.clear();
+                statuses.clear();
+                uid = dataSnapshot.child("userids").child(username).getValue().toString();
+                Iterable<DataSnapshot> oilInformation = dataSnapshot.child("requests").child(uid).child("orders").getChildren();
+                for (DataSnapshot info : oilInformation) {
+                    OilRequest oilRequest = info.getValue(OilRequest.class);
+                    oilRequestsList.add(oilRequest);
+                    if (oilRequest.getStatus().equals("Pending") || oilRequest.getStatus().equals("Denied")) {
+                        oilTypes.add(oilRequest.getOilType());
+                        request.add(oilRequest.getRequestId());
+                        quantities.add(oilRequest.getOilQuantity());
+                        prices.add(oilRequest.getPrice());
+                        statuses.add(oilRequest.getStatus());
+
+                        recyclerView.setHasFixedSize(true);
+
+                        layoutManager = new LinearLayoutManager(getApplicationContext());
+                        recyclerView.setLayoutManager(layoutManager);
+                        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+                        adapter = new AdminOrderViewCustomAdapter(oilTypes, quantities, prices, statuses);
+                        adapter.notifyDataSetChanged();
+                        recyclerView.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+                        ViewCompat.setNestedScrollingEnabled(recyclerView, true);
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
 }
