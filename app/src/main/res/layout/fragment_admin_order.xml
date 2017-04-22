@@ -198,7 +198,7 @@
             android:id="@+id/editbutton"
             android:layout_marginTop="20dp"
             android:background="@color/matYellow"
-            android:textColor="#222222"
+            android:textColor="#ffffff"
             />
 
     </LinearLayout>
