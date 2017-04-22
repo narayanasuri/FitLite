@@ -34,6 +34,7 @@ public class OrderFragment extends Fragment {
     private final List<Integer> oilQuantitities = new ArrayList<>();
     private final List<Integer> pricey = new ArrayList<Integer>();
     private final List<String> statuses = new ArrayList<>();
+    private final List<Integer> discounts = new ArrayList<>();
     private final List<OilRequest> oilRequestsList = new ArrayList<>();
 
     private static RecyclerView.Adapter adapter;
@@ -72,6 +73,7 @@ public class OrderFragment extends Fragment {
                     oilQuantitities.add(oilRequest.getOilQuantity());
                     statuses.add(oilRequest.getStatus());
                     pricey.add(oilRequest.getPrice());
+                    discounts.add(oilRequest.getDiscount());
                 }
 
                 recyclerView.setHasFixedSize(true);
@@ -80,7 +82,7 @@ public class OrderFragment extends Fragment {
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-                adapter = new CustomAdapter(oilTypes, oilQuantitities,pricey, statuses);
+                adapter = new CustomAdapter(oilTypes, oilQuantitities,pricey, statuses, discounts);
 
                 recyclerView.setAdapter(adapter);
 

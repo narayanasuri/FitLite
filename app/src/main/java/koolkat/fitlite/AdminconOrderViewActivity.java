@@ -73,7 +73,7 @@ public class AdminconOrderViewActivity extends Activity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        adapter = new AdminconOrderViewCustomAdapter(oilTypes, quantities, prices,status);
+        adapter = new AdminconOrderViewCustomAdapter(oilTypes, quantities, prices, status);
 
         recyclerView.setAdapter(adapter);
 
@@ -89,27 +89,28 @@ public class AdminconOrderViewActivity extends Activity {
                 status.clear();
                 uid = dataSnapshot.child("userids").child(username).getValue().toString();
                 Iterable<DataSnapshot> oilInformation = dataSnapshot.child("requests").child(uid).child("orders").getChildren();
-                for(DataSnapshot info : oilInformation){
+                for (DataSnapshot info : oilInformation) {
                     OilRequest oilRequest = info.getValue(OilRequest.class);
                     oilRequestsList.add(oilRequest);
-if(oilRequest.getStatus().equals("Approved")) {
-    oilTypes.add(oilRequest.getOilType());
-    quantities.add(oilRequest.getOilQuantity());
-    prices.add(oilRequest.getPrice());
-    status.add(oilRequest.getStatus());
-    recyclerView.setHasFixedSize(true);
+                    if (oilRequest.getStatus().equals("Approved")) {
+                        oilTypes.add(oilRequest.getOilType());
+                        quantities.add(oilRequest.getOilQuantity());
+                        prices.add(oilRequest.getPrice());
+                        status.add(oilRequest.getStatus());
+                        recyclerView.setHasFixedSize(true);
 
-    layoutManager = new LinearLayoutManager(getApplicationContext());
-    recyclerView.setLayoutManager(layoutManager);
-    recyclerView.setItemAnimator(new DefaultItemAnimator());
+                        layoutManager = new LinearLayoutManager(getApplicationContext());
+                        recyclerView.setLayoutManager(layoutManager);
+                        recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-    adapter = new AdminconOrderViewCustomAdapter(oilTypes, quantities, prices, status);
+                        adapter = new AdminconOrderViewCustomAdapter(oilTypes, quantities, prices, status);
 
-    recyclerView.setAdapter(adapter);
+                        recyclerView.setAdapter(adapter);
 
-    ViewCompat.setNestedScrollingEnabled(recyclerView, true);
+                        ViewCompat.setNestedScrollingEnabled(recyclerView, true);
 
-}  }
+                    }
+                }
 
             }
 
