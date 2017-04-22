@@ -63,6 +63,7 @@ public class OrderFragment extends Fragment {
                 oilQuantitities.clear();
                 statuses.clear();
                 pricey.clear();
+                discounts.clear();
                 FirebaseUser user = firebaseAuth.getCurrentUser();
 
                 Iterable<DataSnapshot> oilInformation = dataSnapshot.child(user.getUid()).child("orders").getChildren();
