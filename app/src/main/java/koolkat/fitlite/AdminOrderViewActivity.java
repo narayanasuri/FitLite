@@ -37,6 +37,7 @@ public class AdminOrderViewActivity extends Activity {
     final private List<Integer> quantities = new ArrayList<Integer>();
     final private List<Integer> prices = new ArrayList<Integer>();
     final private List<Integer> request = new ArrayList<Integer>();
+    final private List<Integer> discount = new ArrayList<Integer>();
     final private List<String> statuses = new ArrayList<String>();
     private final List<OilRequest> oilRequestsList = new ArrayList<>();
     int confirmed, litres, x, price, oilQuantity, count;
@@ -175,6 +176,7 @@ public class AdminOrderViewActivity extends Activity {
         y -= x;
         int a = price / oilQuantity;
         price = ((oilQuantity - y) * a) + (y * 15);
+        databaseReference.child("requests").child(uid).child("orders").child(pos + "").child("discount").setValue(y);
         databaseReference.child("requests").child(uid).child("orders").child(pos + "").child("price").setValue(price);
         databaseReference.child("calc").child(uid).child("price").setValue(x + y);
         Toast.makeText(getApplicationContext(), "Order Approved!", Toast.LENGTH_SHORT).show();
@@ -189,6 +191,7 @@ public class AdminOrderViewActivity extends Activity {
                 quantities.clear();
                 prices.clear();
                 statuses.clear();
+                discount.clear();
                 uid = dataSnapshot.child("userids").child(username).getValue().toString();
                 Iterable<DataSnapshot> oilInformation = dataSnapshot.child("requests").child(uid).child("orders").getChildren();
                 for (DataSnapshot info : oilInformation) {
@@ -200,7 +203,7 @@ public class AdminOrderViewActivity extends Activity {
                         quantities.add(oilRequest.getOilQuantity());
                         prices.add(oilRequest.getPrice());
                         statuses.add(oilRequest.getStatus());
-
+                        discount.add(oilRequest.getDiscount());
                         recyclerView.setHasFixedSize(true);
 
                         layoutManager = new LinearLayoutManager(getApplicationContext());
