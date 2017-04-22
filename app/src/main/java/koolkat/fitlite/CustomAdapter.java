@@ -66,7 +66,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         viewHolder.oilquantitytv.setText("Quantity : "+quant+" litres");
         viewHolder.pricetv.setText("Price : ₹"+price+"/-");
         viewHolder.statustv.setText("Status : "+statuses.get(i));
-        viewHolder.discounttv.setText(discounts.get(i)+" litres discounted as ₹15/litre");
+        if(discounts.get(i)==0)
+            viewHolder.discounttv.setVisibility(View.GONE);
+        else
+            viewHolder.discounttv.setText(discounts.get(i)+" litres discounted as ₹15/litre");
     }
 
     @Override
