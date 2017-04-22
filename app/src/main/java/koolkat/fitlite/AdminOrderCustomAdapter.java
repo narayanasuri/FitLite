@@ -53,7 +53,7 @@ public class AdminOrderCustomAdapter extends RecyclerView.Adapter<AdminOrderCust
 
         String usr = "Username : "+usernames.get(position);
         String phn = "Phone Number : "+phonenumbers.get(position);
-        String ord = "Number of Requests : " + orderNumbers.get(position).toString();
+        String ord = "Total number of orders : " + orderNumbers.get(position).toString();
         holder.usernametv.setText(usr);
         holder.phonenumbertv.setText(phn);
         holder.ordernotv.setText(ord);

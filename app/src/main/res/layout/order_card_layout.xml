@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="2dp"
-            android:text="number of orders : "
+            android:text="Total number of orders : "
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
