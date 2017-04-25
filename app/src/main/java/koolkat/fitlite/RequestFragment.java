@@ -52,7 +52,7 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
     private ProgressDialog progressDialog;
     Calendar c;
     SimpleDateFormat df;
-
+    int value=0;
     public RequestFragment() {
         // Required empty public constructor
     }
@@ -114,6 +114,7 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 oiltype = parent.getItemAtPosition(position).toString();
+                value=position;
                 b();
                 pricea.setText("₹" + price + "/-");
             }
@@ -186,17 +187,17 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
             x = 0;
         else
             x = Integer.parseInt(alpha);
-        switch (oiltype) {
-            case "FITLITE GROUNDNUT 1 LTR":
+        switch (value) {
+            case 0:
                 price = x * Aprice;
                 break;
-            case "FITLITE GINGELLY  1 LTR":
+            case 1:
                 price = x * Bprice;
                 break;
-            case "FITLITE COCONUT 1/2 LTR":
+            case 2:
                 price = x * Cprice;
                 break;
-            case "NCS GINGELLY  1 LTR":
+            case 3:
                 price = x * Dprice;
                 break;
             default:

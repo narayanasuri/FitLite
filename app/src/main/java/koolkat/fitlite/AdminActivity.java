@@ -146,7 +146,7 @@ public class AdminActivity extends AppCompatActivity {
                 case 1:
                     return "PRICES";
                 case 2:
-                    return "ORDERS";
+                    return "CONFIRMED ORDERS";
             }
             return null;
         }
