@@ -10,17 +10,17 @@
     <string name="log_out">Log Out</string>
     <string name="my_profile">My Profile</string>
     <string-array name="oiltypes">
-        <item>Oil Type A</item>
-        <item>Oil Type B</item>
-        <item>Oil Type C</item>
-        <item>Oil Type D</item>
+        <item>FITLITE GROUNDNUT 1 LTR</item>
+        <item>FITLITE GINGELLY  1 LTR</item>
+        <item>FITLITE COCONUT 1/2 LTR</item>
+        <item>NCS GINGELLY  1 LTR</item>
     </string-array>
     <string name="orders">Please select an oil type for requesting. Your request will be processed shortly.
         You can see the status of your request in the \'ORDERS\' pane. If you want to place, multiple orders, please do so one by one.</string>
-    <string name="oil_type_a">Oil Type A : ₹</string>
-    <string name="oil_type_b">Oil Type B : ₹</string>
-    <string name="oil_type_c">Oil Type C : ₹</string>
-    <string name="oil_type_d">Oil Type D : ₹</string>
+    <string name="oil_type_a">FITLITE GROUNDNUT 1 LTR : ₹</string>
+    <string name="oil_type_b">FITLITE GINGELLY  1 LTR : ₹</string>
+    <string name="oil_type_c">FITLITE COCONUT 1/2 LTR : ₹</string>
+    <string name="oil_type_d">NCS GINGELLY  1 LTR : ₹</string>
     <string name="priceslabel">"Prices may vary from time to time. Price of the oil while making the request is considered the price at the particular time period and the amount is calculated with respect to the same."</string>
     <string name="select_an_oil_type">SELECT AN OIL TYPE</string>
     <string name="title_activity_admin">AdminActivity</string>

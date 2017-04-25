@@ -1,32 +1,31 @@
-<android.support.v4.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    >
+    android:paddingLeft="32dp"
+    android:paddingRight="32dp"
+    android:paddingTop="@dimen/activity_vertical_margin">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:focusable="true"
-        android:orientation="vertical"
-        android:focusableInTouchMode="true">
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
 
         <android.support.v7.widget.CardView
             android:id="@+id/prices_card"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            card_view:cardElevation="16dp"
-            android:padding="16dp"
+            android:padding="6dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             card_view:cardBackgroundColor="@color/matYellow"
-            card_view:cardCornerRadius="4dp">
+            card_view:cardCornerRadius="4dp"
+            card_view:cardElevation="16dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -48,19 +47,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/pricetitle_tv"
-                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     android:padding="4dp">
 
                     <TextView
 
+                        android:id="@+id/textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@string/oil_type_a"
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
+
                     <TextView
                         android:id="@+id/oiltypeAtv"
                         android:layout_width="wrap_content"
@@ -77,7 +79,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/oiltypeAlayout"
-                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:orientation="horizontal"
                     android:padding="4dp">
 
@@ -89,6 +92,7 @@
                         android:text="@string/oil_type_b"
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
+
                     <TextView
                         android:id="@+id/oiltypeBtv"
                         android:layout_width="wrap_content"
@@ -104,7 +108,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/oiltypeBlayout"
-                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:orientation="horizontal"
                     android:padding="4dp">
 
@@ -116,6 +121,7 @@
                         android:text="@string/oil_type_c"
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
+
                     <TextView
                         android:id="@+id/oiltypeCtv"
                         android:layout_width="wrap_content"
@@ -131,7 +137,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/oiltypeClayout"
-                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:orientation="horizontal"
                     android:padding="4dp">
 
@@ -144,6 +151,7 @@
                         android:text="@string/oil_type_d"
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
+
                     <TextView
                         android:id="@+id/oiltypeDtv"
                         android:layout_width="wrap_content"
@@ -159,47 +167,42 @@
         </android.support.v7.widget.CardView>
 
         <EditText
+            android:id="@+id/oiltypeAet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:padding="16dp"
-            android:id="@+id/oiltypeAet"
-            android:hint="Oil Type A"
-            />
+            android:hint="FITLITE GROUNDNUT 1 LTR"
+            android:padding="16dp" />
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
             android:id="@+id/oiltypeBet"
-            android:hint="Oil Type B"
-            />
-
-        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
+            android:hint="FITLITE GINGELLY  1 LTR"
+            android:padding="16dp" />
+
+        <EditText
             android:id="@+id/oiltypeCet"
-            android:hint="Oil Type C"
-            />
-
-        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
+            android:hint="FITLITE COCONUT 1/2 LTR"
+            android:padding="16dp" />
+
+        <EditText
             android:id="@+id/oiltypeDet"
-            android:hint="Oil Type D"
-            />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="NCS GINGELLY  1 LTR"
+            android:padding="16dp" />
 
         <Button
+            android:id="@+id/editbutton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="EDIT"
-            android:id="@+id/editbutton"
             android:layout_marginTop="20dp"
             android:background="@color/matYellow"
-            android:textColor="#ffffff"
-            />
+            android:text="EDIT"
+            android:textColor="#ffffff" />
 
     </LinearLayout>
 

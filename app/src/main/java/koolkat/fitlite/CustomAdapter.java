@@ -3,15 +3,13 @@ package koolkat.fitlite;
 /**
  * Created by Admin on 4/14/2017.
  */
+
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
@@ -25,7 +23,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     public CustomAdapter(List<String> oilTypes, List<Integer> oilQuantitities, List<Integer> pricey, List<String> statuses, List<Integer> discounts) {
         this.oilTypes = oilTypes;
         this.oilQuantitities = oilQuantitities;
-        this.pricey=pricey;
+        this.pricey = pricey;
         this.statuses = statuses;
         this.discounts = discounts;
     }
@@ -60,16 +58,16 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     @Override
     public void onBindViewHolder(CustomAdapter.ViewHolder viewHolder, int i) {
 
-        viewHolder.oiltypetv.setText("Oil : "+oilTypes.get(i));
+        viewHolder.oiltypetv.setText("Oil : " + oilTypes.get(i));
         String quant = oilQuantitities.get(i).toString();
         String price = pricey.get(i).toString();
-        viewHolder.oilquantitytv.setText("Quantity : "+quant+" litres");
-        viewHolder.pricetv.setText("Price : ₹"+price+"/-");
-        viewHolder.statustv.setText("Status : "+statuses.get(i));
-        if(discounts.get(i)==0)
+        viewHolder.oilquantitytv.setText("Quantity : " + quant + " litres");
+        viewHolder.pricetv.setText("Price : ₹" + price + "/-");
+        viewHolder.statustv.setText("Status : " + statuses.get(i));
+        if (discounts.get(i) == 0)
             viewHolder.discounttv.setVisibility(View.GONE);
         else
-            viewHolder.discounttv.setText(discounts.get(i)+" litres discounted as ₹15/litre");
+            viewHolder.discounttv.setText(discounts.get(i) + " litres discounted as ₹15/litre");
     }
 
     @Override

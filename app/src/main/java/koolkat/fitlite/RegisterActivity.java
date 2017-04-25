@@ -3,12 +3,12 @@ package koolkat.fitlite;
 /**
  * Created by Admin on 4/8/2017.
  */
-import android.app.Activity;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -24,9 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import org.w3c.dom.Text;
-
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText usernameet, phnoet, emailidet, pwd1et, pwd2et;
     Button btnRegister;
@@ -65,16 +63,16 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-        if(v==btnRegister){
+        if (v == btnRegister) {
             registerUser();
         }
-        if(v==logintv){
+        if (v == logintv) {
             finish();
             startActivity(new Intent(this, LoginActivity.class));
         }
     }
 
-    private void registerUser(){
+    private void registerUser() {
 
         final String username = usernameet.getText().toString().trim();
         final String phonenumber = phnoet.getText().toString().trim();
@@ -82,12 +80,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         String pwd1 = pwd1et.getText().toString().trim();
         String pwd2 = pwd2et.getText().toString().trim();
 
-        if(TextUtils.isEmpty(username) || TextUtils.isEmpty(email) || TextUtils.isEmpty(pwd1) || TextUtils.isEmpty(pwd2) ){
+        if (TextUtils.isEmpty(username) || TextUtils.isEmpty(email) || TextUtils.isEmpty(pwd1) || TextUtils.isEmpty(pwd2)) {
             Toast.makeText(this, "Please fill all the fields!", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if( pwd1.equals(pwd2)) {
+        if (pwd1.equals(pwd2)) {
             progressDialog.setMessage("Registering User");
             progressDialog.show();
 
@@ -95,10 +93,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful()){
+                            if (task.isSuccessful()) {
                                 progressDialog.dismiss();
                                 Toast.makeText(RegisterActivity.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
-                                UserInformation userInformation = new UserInformation(0, username,phonenumber);
+                                UserInformation userInformation = new UserInformation(0, username, phonenumber);
                                 FirebaseUser user = firebaseAuth.getCurrentUser();
                                 databaseReference.child("userids").child(username).setValue(user.getUid());
                                 databaseReference.child("Users").child(user.getUid()).setValue(userInformation);
@@ -106,15 +104,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                 databaseReference.child("calc").child(user.getUid()).child("numberOfLitres").setValue(0);
                                 databaseReference.child("calc").child(user.getUid()).child("price").setValue(0);
                                 databaseReference.child("calc").child(user.getUid()).child("confirmedOrders").setValue(0);
-                            }
-                            else{
+                            } else {
                                 progressDialog.dismiss();
                                 Toast.makeText(RegisterActivity.this, "Registration Failed! Please try again!", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
-        }
-        else
+        } else
             Toast.makeText(this, "Passwords don't match!", Toast.LENGTH_SHORT).show();
     }
 

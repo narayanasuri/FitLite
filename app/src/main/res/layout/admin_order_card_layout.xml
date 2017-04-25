@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/admin_vieworder_card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
-    card_view:cardElevation="16dp"
     card_view:cardBackgroundColor="@color/matYellow"
-    card_view:cardCornerRadius="8dp">
+    card_view:cardCornerRadius="8dp"
+    card_view:cardElevation="16dp">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -42,7 +41,7 @@
             android:padding="2dp"
             android:text="Price : "
             android:textColor="@android:color/white"
-            android:textSize="17sp"/>
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/ordercard_status"
@@ -50,8 +49,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:text="Status : "
             android:layout_marginTop="25dp"
+            android:text="Status : "
             android:textColor="@android:color/white"
             android:textSize="17sp"
             android:textStyle="italic" />

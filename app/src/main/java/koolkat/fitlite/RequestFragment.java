@@ -38,8 +38,8 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
     String oiltype;
     String orderid;
     public String status = "Pending";
-    int quantity,discount=0;
-    int price=0,Aprice,Bprice,Cprice,Dprice;
+    int quantity, discount = 0;
+    int price = 0, Aprice, Bprice, Cprice, Dprice;
     public int reqId;
     Button requestButton;
     EditText quantityet;
@@ -68,9 +68,8 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
         adapter = ArrayAdapter.createFromResource(getContext(), R.array.oiltypes, R.layout.spinner_item);
-        adapter .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-
 
 
         requestButton.setOnClickListener(this);
@@ -78,13 +77,14 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
         databaseReference.child("price").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Aprice = Integer.parseInt( dataSnapshot.child("oil1").getValue().toString());
-                Bprice = Integer.parseInt( dataSnapshot.child("oil2").getValue().toString());
-                Cprice = Integer.parseInt( dataSnapshot.child("oil3").getValue().toString());
-                Dprice = Integer.parseInt( dataSnapshot.child("oil4").getValue().toString());
+                Aprice = Integer.parseInt(dataSnapshot.child("oil1").getValue().toString());
+                Bprice = Integer.parseInt(dataSnapshot.child("oil2").getValue().toString());
+                Cprice = Integer.parseInt(dataSnapshot.child("oil3").getValue().toString());
+                Dprice = Integer.parseInt(dataSnapshot.child("oil4").getValue().toString());
 
 
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
@@ -95,7 +95,7 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-               reqId = (int)dataSnapshot.getChildrenCount();
+                reqId = (int) dataSnapshot.getChildrenCount();
                 Log.d("ORDER ID", reqId + "");
             }
 
@@ -109,7 +109,7 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 oiltype = parent.getItemAtPosition(position).toString();
                 b();
-                pricea.setText("₹"+price+"/-");
+                pricea.setText("₹" + price + "/-");
             }
 
 
@@ -118,8 +118,7 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
 
             }
         });
-        quantityet.addTextChangedListener(new TextWatcher()
-        {
+        quantityet.addTextChangedListener(new TextWatcher() {
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -133,7 +132,7 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
 
             @Override
             public void afterTextChanged(Editable s) {
-                pricea.setText("₹"+price+"/-");
+                pricea.setText("₹" + price + "/-");
             }
         });
         return view;
@@ -141,7 +140,7 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if(v==requestButton) {
+        if (v == requestButton) {
             progressDialog.setMessage("Requesting");
             progressDialog.show();
 
@@ -151,9 +150,7 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
                 if (quantity > 0) {
                     a(reqId);
                 }
-            }
-
-            else {
+            } else {
                 progressDialog.dismiss();
                 Toast.makeText(getContext(), "Request Failed! Please try again!", Toast.LENGTH_SHORT).show();
             }
@@ -164,8 +161,8 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
     public void a(int reqId) {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         reqId = reqId + 1;
-        orderid = ""+reqId;
-        OilRequest oilRequest = new OilRequest(reqId, oiltype, quantity, status,price,discount);
+        orderid = "" + reqId;
+        OilRequest oilRequest = new OilRequest(reqId, oiltype, quantity, status, price, discount);
         databaseReference.child("Users").child(user.getUid()).child("numberOfOrders").setValue(reqId);
         databaseReference.child("requests").child(user.getUid()).child("numberOfOrders").setValue(reqId);
         databaseReference.child("requests").child(user.getUid()).child("orders").child(orderid).setValue(oilRequest);
@@ -173,22 +170,31 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
         Toast.makeText(getContext(), "Request successful!", Toast.LENGTH_SHORT).show();
 
     }
-    public void b(){
-        String alpha=quantityet.getText().toString();
+
+    public void b() {
+        String alpha = quantityet.getText().toString();
         int x;
-        if(oiltype==null)
-            oiltype="";
-        if(alpha.equals(""))
-            x=0;
+        if (oiltype == null)
+            oiltype = "";
+        if (alpha.equals(""))
+            x = 0;
         else
-            x=Integer.parseInt(alpha);
-        switch (oiltype)
-        {
-            case "Oil Type A":price=x*Aprice;break;
-            case "Oil Type B":price=x*Bprice;break;
-            case "Oil Type C":price=x*Cprice;break;
-            case "Oil Type D":price=x*Dprice;break;
-            default:price=0;
+            x = Integer.parseInt(alpha);
+        switch (oiltype) {
+            case "Oil Type A":
+                price = x * Aprice;
+                break;
+            case "Oil Type B":
+                price = x * Bprice;
+                break;
+            case "Oil Type C":
+                price = x * Cprice;
+                break;
+            case "Oil Type D":
+                price = x * Dprice;
+                break;
+            default:
+                price = 0;
         }
     }
 

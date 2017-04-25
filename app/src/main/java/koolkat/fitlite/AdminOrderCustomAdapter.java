@@ -51,8 +51,8 @@ public class AdminOrderCustomAdapter extends RecyclerView.Adapter<AdminOrderCust
     @Override
     public void onBindViewHolder(AdminOrderCustomAdapter.ViewHolder holder, int position) {
 
-        String usr = "Username : "+usernames.get(position);
-        String phn = "Phone Number : "+phonenumbers.get(position);
+        String usr = "Username : " + usernames.get(position);
+        String phn = "Phone Number : " + phonenumbers.get(position);
         String ord = "Total number of orders : " + orderNumbers.get(position).toString();
         holder.usernametv.setText(usr);
         holder.phonenumbertv.setText(phn);

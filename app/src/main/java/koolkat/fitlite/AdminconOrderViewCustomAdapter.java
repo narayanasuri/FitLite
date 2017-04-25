@@ -20,11 +20,11 @@ public class AdminconOrderViewCustomAdapter extends RecyclerView.Adapter<Adminco
     private List<Integer> prices = new ArrayList<>();
     private List<String> status = new ArrayList<>();
 
-    public AdminconOrderViewCustomAdapter(List<String> oilTypes, List<Integer> quantities, List<Integer> prices,List<String> status) {
+    public AdminconOrderViewCustomAdapter(List<String> oilTypes, List<Integer> quantities, List<Integer> prices, List<String> status) {
         this.oilTypes = oilTypes;
         this.quantities = quantities;
         this.prices = prices;
-        this.status=status;
+        this.status = status;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -53,16 +53,16 @@ public class AdminconOrderViewCustomAdapter extends RecyclerView.Adapter<Adminco
     @Override
     public void onBindViewHolder(AdminconOrderViewCustomAdapter.ViewHolder holder, int position) {
 
-        if(status.get(position).matches("Approved")){
-        String oiltype = "Oil : "+oilTypes.get(position);
-        String quantity = "Quantity : "+quantities.get(position).toString()+" litres";
-        String price = "Price : ₹"+prices.get(position).toString();
-            String stat = "Status : "+status.get(position).toString();
-        holder.oiltypetv.setText(oiltype);
-        holder.quantitytv.setText(quantity);
-        holder.pricetv.setText(price);
+        if (status.get(position).matches("Approved")) {
+            String oiltype = "Oil : " + oilTypes.get(position);
+            String quantity = "Quantity : " + quantities.get(position).toString() + " litres";
+            String price = "Price : ₹" + prices.get(position).toString();
+            String stat = "Status : " + status.get(position).toString();
+            holder.oiltypetv.setText(oiltype);
+            holder.quantitytv.setText(quantity);
+            holder.pricetv.setText(price);
             holder.statustv.setText(stat);
-    }
+        }
 
     }
 

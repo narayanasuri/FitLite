@@ -29,7 +29,6 @@ public class AdminconOrderCustomAdapter extends RecyclerView.Adapter<AdminconOrd
         TextView phonenumbertv;
 
 
-
         public ViewHolder(View itemView) {
             super(itemView);
             usernametv = (TextView) itemView.findViewById(R.id.card_username);
@@ -50,8 +49,8 @@ public class AdminconOrderCustomAdapter extends RecyclerView.Adapter<AdminconOrd
     @Override
     public void onBindViewHolder(AdminconOrderCustomAdapter.ViewHolder holder, int position) {
 
-        String usr = "Username : "+usernames.get(position);
-        String phn = "Phone Number : "+phonenumbers.get(position);
+        String usr = "Username : " + usernames.get(position);
+        String phn = "Phone Number : " + phonenumbers.get(position);
         holder.usernametv.setText(usr);
         holder.phonenumbertv.setText(phn);
 

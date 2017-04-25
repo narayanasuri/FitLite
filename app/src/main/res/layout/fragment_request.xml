@@ -32,9 +32,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
-            android:textColor="#222222"
             android:backgroundTint="#222222"
-            android:foregroundTint="#222222">
+            android:foregroundTint="#222222"
+            android:textColor="#222222">
 
         </Spinner>
 
@@ -91,10 +91,10 @@
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:background="@color/matYellow"
-            android:text="  Request  "
             android:padding="5dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
+            android:text="  Request  "
             android:textColor="@android:color/white" />
 
     </LinearLayout>

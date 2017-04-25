@@ -67,7 +67,7 @@ public class OrderFragment extends Fragment {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
 
                 Iterable<DataSnapshot> oilInformation = dataSnapshot.child(user.getUid()).child("orders").getChildren();
-                for(DataSnapshot info : oilInformation){
+                for (DataSnapshot info : oilInformation) {
                     OilRequest oilRequest = info.getValue(OilRequest.class);
                     oilRequestsList.add(oilRequest);
                     oilTypes.add(oilRequest.getOilType());
@@ -83,7 +83,7 @@ public class OrderFragment extends Fragment {
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-                adapter = new CustomAdapter(oilTypes, oilQuantitities,pricey, statuses, discounts);
+                adapter = new CustomAdapter(oilTypes, oilQuantitities, pricey, statuses, discounts);
 
                 recyclerView.setAdapter(adapter);
 

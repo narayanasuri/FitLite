@@ -2,20 +2,18 @@ package koolkat.fitlite;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -61,7 +59,7 @@ public class AdminActivity extends AppCompatActivity {
 
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.main_content_admin);
 
-        if(firebaseAuth.getCurrentUser() == null){
+        if (firebaseAuth.getCurrentUser() == null) {
             finish();
             startActivity(new Intent(this, LoginActivity.class));
         }
@@ -95,10 +93,7 @@ public class AdminActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             return true;
         }
-        if (id == R.id.action_profile) {
-            startActivity(new Intent(getApplicationContext(), Profile.class));
-            return true;
-        }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -116,7 +111,7 @@ public class AdminActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            switch (position){
+            switch (position) {
                 case 0:
                     AdminOrderFragment adminOrderFragment = new AdminOrderFragment();
                     return adminOrderFragment;

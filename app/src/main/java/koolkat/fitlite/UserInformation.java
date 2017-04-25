@@ -10,7 +10,7 @@ public class UserInformation {
     public String username;
     public String phonenumber;
 
-    public UserInformation(){
+    public UserInformation() {
 
     }
 
@@ -20,7 +20,9 @@ public class UserInformation {
         this.phonenumber = phonenumber;
     }
 
-    public  int getNumberOfOrders(){ return numberOfOrders; }
+    public int getNumberOfOrders() {
+        return numberOfOrders;
+    }
 
     public String getUsername() {
         return username;

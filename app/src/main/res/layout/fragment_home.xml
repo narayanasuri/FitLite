@@ -26,14 +26,16 @@
 
         <android.support.v7.widget.CardView
             android:id="@+id/prices_card"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/pricestv"
             android:layout_centerHorizontal="true"
-            card_view:cardElevation="16dp"
             android:padding="16dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             card_view:cardBackgroundColor="@color/matYellow"
-            card_view:cardCornerRadius="4dp">
+            card_view:cardCornerRadius="4dp"
+            card_view:cardElevation="16dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -55,7 +57,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/pricetitle_tv"
-                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     android:padding="4dp">
@@ -68,6 +71,7 @@
                         android:text="@string/oil_type_a"
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
+
                     <TextView
                         android:id="@+id/oiltypeAtv"
                         android:layout_width="wrap_content"
@@ -84,7 +88,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/oiltypeAlayout"
-                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:orientation="horizontal"
                     android:padding="4dp">
 
@@ -96,6 +101,7 @@
                         android:text="@string/oil_type_b"
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
+
                     <TextView
                         android:id="@+id/oiltypeBtv"
                         android:layout_width="wrap_content"
@@ -111,7 +117,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/oiltypeBlayout"
-                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:orientation="horizontal"
                     android:padding="4dp">
 
@@ -123,6 +130,7 @@
                         android:text="@string/oil_type_c"
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
+
                     <TextView
                         android:id="@+id/oiltypeCtv"
                         android:layout_width="wrap_content"
@@ -138,7 +146,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/oiltypeClayout"
-                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:orientation="horizontal"
                     android:padding="4dp">
 
@@ -151,6 +160,7 @@
                         android:text="@string/oil_type_d"
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
+
                     <TextView
                         android:id="@+id/oiltypeDtv"
                         android:layout_width="wrap_content"

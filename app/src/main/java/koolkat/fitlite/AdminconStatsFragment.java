@@ -77,7 +77,7 @@ public class AdminconStatsFragment extends Fragment {
                 phonenumbers.clear();
                 orderNumbers.clear();
 
-                collectData((Map<String,Object>) dataSnapshot.getValue());
+                collectData((Map<String, Object>) dataSnapshot.getValue());
 
                 recyclerView.setHasFixedSize(true);
 
@@ -116,10 +116,10 @@ public class AdminconStatsFragment extends Fragment {
                     final int i = rv.getChildAdapterPosition(child);
 
                     String usrname = usernames.get(i);
-                    String phone=phonenumbers.get(i);
+                    String phone = phonenumbers.get(i);
                     Intent intent = new Intent(getContext(), AdminconOrderViewActivity.class);
                     intent.putExtra("username", usrname);
-                    intent.putExtra("phone",phone);
+                    intent.putExtra("phone", phone);
                     startActivity(intent);
                 }
                 return false;
@@ -140,15 +140,15 @@ public class AdminconStatsFragment extends Fragment {
         return view;
     }
 
-    void collectData(Map<String,Object> users) {
+    void collectData(Map<String, Object> users) {
 
         //iterate through each user, ignoring their UID
-        for (Map.Entry<String, Object> entry : users.entrySet()){
+        for (Map.Entry<String, Object> entry : users.entrySet()) {
 
             //Get user map
             Map singleUser = (Map) entry.getValue();
             //Get phone field and append to list
-            if(singleUser.get("username").toString().equalsIgnoreCase("narayanasuri"))
+            if (singleUser.get("username").toString().equalsIgnoreCase("narayanasuri") || singleUser.get("username").toString().equalsIgnoreCase("selvakumarasamy"))
                 continue;
             usernames.add(singleUser.get("username").toString());
             phonenumbers.add(singleUser.get("phonenumber").toString());

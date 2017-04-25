@@ -1,7 +1,6 @@
 package koolkat.fitlite;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -57,10 +55,10 @@ public class HomeFragment extends Fragment {
                 final String typeCprice = dataSnapshot.child("oil3").getValue().toString();
                 final String typeDprice = dataSnapshot.child("oil4").getValue().toString();
 
-                type1tv.setText(typeAprice+"/litre");
-                type2tv.setText(typeBprice+"/litre");
-                type3tv.setText(typeCprice+"/litre");
-                type4tv.setText(typeDprice+"/litre");
+                type1tv.setText(typeAprice + "/litre");
+                type2tv.setText(typeBprice + "/litre");
+                type3tv.setText(typeCprice + "/litre");
+                type4tv.setText(typeDprice + "/litre");
                 progressDialog.hide();
             }
 

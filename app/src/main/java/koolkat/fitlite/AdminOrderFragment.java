@@ -1,7 +1,6 @@
 package koolkat.fitlite;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -22,8 +21,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
 /**
  * Created by Admin on 4/13/2017.
  */
@@ -37,8 +34,8 @@ public class AdminOrderFragment extends Fragment {
     TextView type1tv, type2tv, type3tv, type4tv;
     EditText type1et, type2et, type3et, type4et;
     Button edit;
-    String typeAprice,typeBprice,typeCprice,typeDprice;
-    int x=1;
+    String typeAprice, typeBprice, typeCprice, typeDprice;
+    int x = 1;
 
     public AdminOrderFragment() {
         // Required empty public constructor
@@ -56,8 +53,11 @@ public class AdminOrderFragment extends Fragment {
         type2et = (EditText) view.findViewById(R.id.oiltypeBet);
         type3et = (EditText) view.findViewById(R.id.oiltypeCet);
         type4et = (EditText) view.findViewById(R.id.oiltypeDet);
-        type1et.setEnabled(false);type2et.setEnabled(false);type3et.setEnabled(false);type4et.setEnabled(false);
-        edit=(Button) view.findViewById(R.id.editbutton);
+        type1et.setEnabled(false);
+        type2et.setEnabled(false);
+        type3et.setEnabled(false);
+        type4et.setEnabled(false);
+        edit = (Button) view.findViewById(R.id.editbutton);
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
         progressDialog = new ProgressDialog(this.getContext());
@@ -73,14 +73,14 @@ public class AdminOrderFragment extends Fragment {
                 typeCprice = dataSnapshot.child("oil3").getValue().toString();
                 typeDprice = dataSnapshot.child("oil4").getValue().toString();
 
-                type1tv.setText(typeAprice+"/litre");
-                type2tv.setText(typeBprice+"/litre");
-                type3tv.setText(typeCprice+"/litre");
-                type4tv.setText(typeDprice+"/litre");
-                type1et.setText(typeAprice+"/litre");
-                type2et.setText(typeBprice+"/litre");
-                type3et.setText(typeCprice+"/litre");
-                type4et.setText(typeDprice+"/litre");
+                type1tv.setText(typeAprice + "/litre");
+                type2tv.setText(typeBprice + "/litre");
+                type3tv.setText(typeCprice + "/litre");
+                type4tv.setText(typeDprice + "/litre");
+                type1et.setText(typeAprice + "/litre");
+                type2et.setText(typeBprice + "/litre");
+                type3et.setText(typeCprice + "/litre");
+                type4et.setText(typeDprice + "/litre");
                 progressDialog.dismiss();
             }
 
@@ -93,9 +93,12 @@ public class AdminOrderFragment extends Fragment {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(x%2==1){
+                if (x % 2 == 1) {
                     edit.setText("Save");
-                    type1et.setEnabled(true);type2et.setEnabled(true);type3et.setEnabled(true);type4et.setEnabled(true);
+                    type1et.setEnabled(true);
+                    type2et.setEnabled(true);
+                    type3et.setEnabled(true);
+                    type4et.setEnabled(true);
                     type1tv.setText(typeAprice);
                     type2tv.setText(typeBprice);
                     type3tv.setText(typeCprice);
@@ -110,8 +113,7 @@ public class AdminOrderFragment extends Fragment {
                     type4et.setInputType(InputType.TYPE_CLASS_NUMBER);
                     Toast.makeText(getContext(), "Please edit the details", Toast.LENGTH_SHORT).show();
                     x++;
-                }
-                else{
+                } else {
                     progressDialog.setMessage("Submitting Prices, Please Wait");
                     progressDialog.show();
                     progressDialog.setCancelable(false);
@@ -119,20 +121,23 @@ public class AdminOrderFragment extends Fragment {
                     type2et.setInputType(InputType.TYPE_CLASS_TEXT);
                     type3et.setInputType(InputType.TYPE_CLASS_TEXT);
                     type4et.setInputType(InputType.TYPE_CLASS_TEXT);
-                    type1et.setEnabled(false);type2et.setEnabled(false);type3et.setEnabled(false);type4et.setEnabled(false);
-                    typeAprice=type1et.getText().toString();
-                    typeBprice=type2et.getText().toString();
-                    typeCprice=type3et.getText().toString();
-                    typeDprice=type4et.getText().toString();
+                    type1et.setEnabled(false);
+                    type2et.setEnabled(false);
+                    type3et.setEnabled(false);
+                    type4et.setEnabled(false);
+                    typeAprice = type1et.getText().toString();
+                    typeBprice = type2et.getText().toString();
+                    typeCprice = type3et.getText().toString();
+                    typeDprice = type4et.getText().toString();
                     databaseReference.child("price").child("oil1").setValue(typeAprice);
                     databaseReference.child("price").child("oil2").setValue(typeBprice);
                     databaseReference.child("price").child("oil3").setValue(typeCprice);
                     databaseReference.child("price").child("oil4").setValue(typeDprice);
                     edit.setText("Edit");
-                    type1tv.setText(typeAprice+"/litre");
-                    type2tv.setText(typeBprice+"/litre");
-                    type3tv.setText(typeCprice+"/litre");
-                    type4tv.setText(typeDprice+"/litre");
+                    type1tv.setText(typeAprice + "/litre");
+                    type2tv.setText(typeBprice + "/litre");
+                    type3tv.setText(typeCprice + "/litre");
+                    type4tv.setText(typeDprice + "/litre");
                     x++;
                     Toast.makeText(getContext(), "Data Saved", Toast.LENGTH_SHORT).show();
                     progressDialog.dismiss();
