@@ -34,14 +34,12 @@ public class AdminStatsFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private FirebaseAuth firebaseAuth;
-    private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference databaseReference;
     private AdminOrderCustomAdapter adapter;
 
-    final private List<String> usernames = new ArrayList<String>();
-    final private List<String> phonenumbers = new ArrayList<String>();
-    final private List<Integer> orderNumbers = new ArrayList<Integer>();
-    final private List<UserInformation> userInformations = new ArrayList<UserInformation>();
+    final private List<String> usernames = new ArrayList<>();
+    final private List<String> phonenumbers = new ArrayList<>();
+    final private List<Integer> orderNumbers = new ArrayList<>();
+    final private List<UserInformation> userInformations = new ArrayList<>();
 
     public AdminStatsFragment() {
 
@@ -54,8 +52,8 @@ public class AdminStatsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_admin_stats, container, false);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.order_recycler_view);
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference();
 
         recyclerView.setHasFixedSize(true);
 
@@ -140,7 +138,7 @@ public class AdminStatsFragment extends Fragment {
         return view;
     }
 
-    void collectData(Map<String, Object> users) {
+    private void collectData(Map<String, Object> users) {
 
         //iterate through each user, ignoring their UID
         for (Map.Entry<String, Object> entry : users.entrySet()) {

@@ -36,23 +36,28 @@ import com.google.firebase.database.ValueEventListener;
  */
 public class RequestFragment extends Fragment implements View.OnClickListener {
 
-    Spinner spinner;
-    ArrayAdapter<CharSequence> adapter;
-    String oiltype;
-    String orderid;
-    public String status = "Pending";
-    int quantity, discount = 0;
-    int price = 0, Aprice, Bprice, Cprice, Dprice;
-    public int reqId;
-    Button requestButton;
-    EditText quantityet;
-    TextView pricea;
+    private Spinner spinner;
+    private ArrayAdapter<CharSequence> adapter;
+    private String oiltype;
+    private String orderid;
+    private String status = "Pending";
+    private int quantity;
+    private int discount = 0;
+    private int price = 0;
+    private int Aprice;
+    private int Bprice;
+    private int Cprice;
+    private int Dprice;
+    private int reqId;
+    private Button requestButton;
+    private EditText quantityet;
+    private TextView pricea;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
     private ProgressDialog progressDialog;
-    Calendar c;
-    SimpleDateFormat df;
-    int value=0;
+    private Calendar c;
+    private SimpleDateFormat df;
+    private int value=0;
     public RequestFragment() {
         // Required empty public constructor
     }
@@ -165,7 +170,7 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    public void a(int reqId) {
+    private void a(int reqId) {
         String formattedDate = df.format(c.getTime());
         FirebaseUser user = firebaseAuth.getCurrentUser();
         reqId = reqId + 1;
@@ -178,7 +183,7 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
         Toast.makeText(getContext(), "Request successful!", Toast.LENGTH_SHORT).show();
     }
 
-    public void b() {
+    private void b() {
         String alpha = quantityet.getText().toString();
         int x;
         if (oiltype == null)

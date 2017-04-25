@@ -19,11 +19,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Profile extends AppCompatActivity {
-    EditText name, mobile;
-    TextView email;
-    Button edit;
-    String username, phone, femail, un;
-    int x = 1;
+    private EditText name;
+    private EditText mobile;
+    private TextView email;
+    private Button edit;
+    private String username;
+    private String phone;
+    private String femail;
+    private String un;
+    private int x = 1;
     private FirebaseUser user;
     private DatabaseReference databaseReference;
 
@@ -75,7 +79,7 @@ public class Profile extends AppCompatActivity {
         });
     }
 
-    public void a() {
+    private void a() {
         user = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference();
         femail = user.getEmail();
@@ -97,7 +101,7 @@ public class Profile extends AppCompatActivity {
 
     }
 
-    public void b() {
+    private void b() {
         name.setText(username);
         email.setText(femail);
         mobile.setText(phone);

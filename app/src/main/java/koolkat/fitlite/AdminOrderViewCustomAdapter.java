@@ -49,8 +49,7 @@ public class AdminOrderViewCustomAdapter extends RecyclerView.Adapter<AdminOrder
     @Override
     public AdminOrderViewCustomAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.admin_order_card_layout, parent, false);
-        AdminOrderViewCustomAdapter.ViewHolder myViewHolder = new AdminOrderViewCustomAdapter.ViewHolder(view);
-        return myViewHolder;
+        return new ViewHolder(view);
     }
 
     @Override
@@ -59,7 +58,7 @@ public class AdminOrderViewCustomAdapter extends RecyclerView.Adapter<AdminOrder
         String oiltype = "Oil : "+oilTypes.get(position);
         String quantity = "Quantity : "+quantities.get(position).toString()+" litres";
         String price = "Price : ₹"+prices.get(position).toString();
-        String status = "Status : "+statuses.get(position).toString();
+        String status = "Status : "+ statuses.get(position);
         holder.oiltypetv.setText(oiltype);
         holder.quantitytv.setText(quantity);
         holder.pricetv.setText(price);

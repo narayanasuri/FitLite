@@ -1,9 +1,5 @@
 package koolkat.fitlite;
 
-/**
- * Created by Admin on 4/8/2017.
- */
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,10 +22,16 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnLogin, btnforgotPassword;
-    TextView registertv, forgotPasswordtv, nvmtv;
-    EditText emailet, passwordet, forgotEmailet;
-    CardView loginCard, forgotPasswordCard;
+    private Button btnLogin;
+    private Button btnforgotPassword;
+    private TextView registertv;
+    private TextView forgotPasswordtv;
+    private TextView nvmtv;
+    private EditText emailet;
+    private EditText passwordet;
+    private EditText forgotEmailet;
+    private CardView loginCard;
+    private CardView forgotPasswordCard;
 
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;

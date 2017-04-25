@@ -4,11 +4,11 @@ package koolkat.fitlite;
  * Created by Admin on 4/9/2017.
  */
 
-public class UserInformation {
+class UserInformation {
 
-    public int numberOfOrders;
-    public String username;
-    public String phonenumber;
+    private int numberOfOrders;
+    private String username;
+    private String phonenumber;
 
     public UserInformation() {
 

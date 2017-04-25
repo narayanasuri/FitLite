@@ -24,7 +24,8 @@
                 android:alpha="0.8"
                 android:scaleType="fitXY"
 
-                android:src="@drawable/mounteun" />
+                android:src="@drawable/mounteun"
+                android:contentDescription="Profile" />
 
 
             <include layout="@layout/toolbar" />

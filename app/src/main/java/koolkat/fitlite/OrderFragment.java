@@ -28,14 +28,13 @@ import java.util.List;
 public class OrderFragment extends Fragment {
 
     private FirebaseAuth firebaseAuth;
-    private DatabaseReference databaseReference;
 
     private final List<String> oilTypes = new ArrayList<>();
     private final List<Integer> oilQuantitities = new ArrayList<>();
-    private final List<Integer> pricey = new ArrayList<Integer>();
+    private final List<Integer> pricey = new ArrayList<>();
     private final List<String> statuses = new ArrayList<>();
     private final List<Integer> discounts = new ArrayList<>();
-    private final List<String> dates = new ArrayList<String>();
+    private final List<String> dates = new ArrayList<>();
     private final List<OilRequest> oilRequestsList = new ArrayList<>();
 
     private static RecyclerView.Adapter adapter;
@@ -55,7 +54,7 @@ public class OrderFragment extends Fragment {
 
         firebaseAuth = FirebaseAuth.getInstance();
         recyclerView = (RecyclerView) view.findViewById(R.id.my_recycler_view);
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
         databaseReference.child("requests").addValueEventListener(new ValueEventListener() {
             @Override

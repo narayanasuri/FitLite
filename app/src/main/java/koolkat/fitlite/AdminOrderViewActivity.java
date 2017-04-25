@@ -1,6 +1,5 @@
 package koolkat.fitlite;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -18,7 +17,6 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,25 +35,29 @@ import java.util.List;
 
 public class AdminOrderViewActivity extends AppCompatActivity {
 
-    final private List<String> oilTypes = new ArrayList<String>();
-    final private List<Integer> quantities = new ArrayList<Integer>();
-    final private List<Integer> prices = new ArrayList<Integer>();
-    final private List<Integer> request = new ArrayList<Integer>();
-    final private List<Integer> discount = new ArrayList<Integer>();
-    final private List<String> statuses = new ArrayList<String>();
-    final private List<String> dates = new ArrayList<String>();
+    final private List<String> oilTypes = new ArrayList<>();
+    final private List<Integer> quantities = new ArrayList<>();
+    final private List<Integer> prices = new ArrayList<>();
+    final private List<Integer> request = new ArrayList<>();
+    final private List<Integer> discount = new ArrayList<>();
+    final private List<String> statuses = new ArrayList<>();
+    final private List<String> dates = new ArrayList<>();
     private final List<OilRequest> oilRequestsList = new ArrayList<>();
-    int confirmed, litres, x, price, oilQuantity, count;
-    String uid;
+    private int confirmed;
+    private int litres;
+    private int x;
+    private int price;
+    private int oilQuantity;
+    private int count;
+    private String uid;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private FirebaseAuth firebaseAuth;
-    private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private AdminOrderViewCustomAdapter adapter;
     private String username;
     private String phone;
-    FloatingActionButton callfab;
+    private FloatingActionButton callfab;
 
 
     public AdminOrderViewActivity() {
@@ -68,7 +70,7 @@ public class AdminOrderViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order_view);
 
         recyclerView = (RecyclerView) findViewById(R.id.admin_order_recycler_view);
-        firebaseDatabase = FirebaseDatabase.getInstance();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
 
         username = getIntent().getStringExtra("username");
@@ -192,7 +194,7 @@ public class AdminOrderViewActivity extends AppCompatActivity {
 
     }
 
-    void a(int confirmed, int litres, int x, int price, int oilQuantity, int pos) {
+    private void a(int confirmed, int litres, int x, int price, int oilQuantity, int pos) {
         confirmed += 1;
         databaseReference.child("calc").child(uid).child("confirmedOrders").setValue(confirmed);
         litres += oilQuantity;
@@ -207,7 +209,7 @@ public class AdminOrderViewActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Order Approved!", Toast.LENGTH_SHORT).show();
     }
 
-    void b() {
+    private void b() {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

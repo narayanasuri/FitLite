@@ -3,7 +3,6 @@ package koolkat.fitlite;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -20,23 +19,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class AdminActivity extends AppCompatActivity {
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
-    private SectionsPagerAdapter mSectionsPagerAdapter;
-    private CoordinatorLayout coordinatorLayout;
-
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
-    private ViewPager mViewPager;
-    private FirebaseAuth firebaseAuth;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,19 +28,29 @@ public class AdminActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        /*
+      The {@link android.support.v4.view.PagerAdapter} that will provide
+      fragments for each of the sections. We use a
+      {@link FragmentPagerAdapter} derivative, which will keep every
+      loaded fragment in memory. If this becomes too memory intensive, it
+      may be best to switch to a
+      {@link android.support.v4.app.FragmentStatePagerAdapter}.
+     */
+        SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container_admin);
+        /*
+      The {@link ViewPager} that will host the section contents.
+     */
+        ViewPager mViewPager = (ViewPager) findViewById(R.id.container_admin);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.setCurrentItem(1);
 
-        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs_admin);
         tabLayout.setupWithViewPager(mViewPager);
 
-        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.main_content_admin);
 
         if (firebaseAuth.getCurrentUser() == null) {
             finish();
@@ -66,7 +58,6 @@ public class AdminActivity extends AppCompatActivity {
         }
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
 
-            return;
         }
 
     }
@@ -114,16 +105,13 @@ public class AdminActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    AdminStatsFragment adminStatsFragment = new AdminStatsFragment();
-                    return adminStatsFragment;
+                    return new AdminStatsFragment();
 
                 case 1:
-                    AdminOrderFragment adminOrderFragment = new AdminOrderFragment();
-                    return adminOrderFragment;
+                    return new AdminOrderFragment();
 
                 case 2:
-                    AdminconStatsFragment adminconStatsFragment = new AdminconStatsFragment();
-                    return adminconStatsFragment;
+                    return new AdminconStatsFragment();
 
 
                 default:

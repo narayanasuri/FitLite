@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,10 +21,11 @@ import com.google.firebase.database.ValueEventListener;
 
 public class HomeFragment extends Fragment {
 
-    private FirebaseAuth firebaseAuth;
-    private DatabaseReference databaseReference;
-    ProgressDialog progressDialog;
-    TextView type1tv, type2tv, type3tv, type4tv;
+    private ProgressDialog progressDialog;
+    private TextView type1tv;
+    private TextView type2tv;
+    private TextView type3tv;
+    private TextView type4tv;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -40,8 +40,7 @@ public class HomeFragment extends Fragment {
         type3tv = (TextView) view.findViewById(R.id.oiltypeCtv);
         type4tv = (TextView) view.findViewById(R.id.oiltypeDtv);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
         progressDialog = new ProgressDialog(this.getContext());
         progressDialog.setMessage("Retrieving Prices, Please Wait");
         progressDialog.show();

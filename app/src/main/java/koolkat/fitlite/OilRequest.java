@@ -4,15 +4,15 @@ package koolkat.fitlite;
  * Created by Admin on 4/13/2017.
  */
 
-public class OilRequest {
+class OilRequest {
 
-    public int requestId;
-    public String oilType;
-    public int oilQuantity;
-    public String status;
-    public int price;
-    public int discount;
-    public String orderdate;
+    private int requestId;
+    private String oilType;
+    private int oilQuantity;
+    private String status;
+    private int price;
+    private int discount;
+    private String orderdate;
 
     public OilRequest() {
 

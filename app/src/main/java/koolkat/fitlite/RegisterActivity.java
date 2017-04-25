@@ -1,9 +1,5 @@
 package koolkat.fitlite;
 
-/**
- * Created by Admin on 4/8/2017.
- */
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,13 +22,16 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText usernameet, phnoet, emailidet, pwd1et, pwd2et;
-    Button btnRegister;
-    TextView logintv;
+    private EditText usernameet;
+    private EditText phnoet;
+    private EditText emailidet;
+    private EditText pwd1et;
+    private EditText pwd2et;
+    private Button btnRegister;
+    private TextView logintv;
     private ProgressDialog progressDialog;
 
     private FirebaseAuth firebaseAuth;
-    private FirebaseDatabase database;
     private DatabaseReference databaseReference;
 
     @Override
@@ -42,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         progressDialog = new ProgressDialog(this);
 
-        database = FirebaseDatabase.getInstance();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
 
         firebaseAuth = FirebaseAuth.getInstance();
 

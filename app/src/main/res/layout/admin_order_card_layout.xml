@@ -51,12 +51,14 @@
             android:text="04-Dec-2016"
             android:textColor="@android:color/white"
             android:textSize="17sp"
-            android:textStyle="italic" />
+            android:textStyle="italic"
+            android:layout_alignParentRight="true" />
 
         <TextView
             android:id="@+id/ordercard_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_below="@id/ordercard_date"
             android:text="Status : Pending"

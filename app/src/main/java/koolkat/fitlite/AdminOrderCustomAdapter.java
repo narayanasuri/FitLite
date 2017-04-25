@@ -24,7 +24,6 @@ public class AdminOrderCustomAdapter extends RecyclerView.Adapter<AdminOrderCust
     private List<String> usernames = new ArrayList<>();
     private List<String> phonenumbers = new ArrayList<>();
     private List<Integer> orderNumbers = new ArrayList<>();
-    private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
 
     public AdminOrderCustomAdapter(List<String> usernames, List<String> phonenumbers, List<Integer> orderNumbers) {
@@ -52,7 +51,7 @@ public class AdminOrderCustomAdapter extends RecyclerView.Adapter<AdminOrderCust
     public AdminOrderCustomAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.order_card_layout, parent, false);
         AdminOrderCustomAdapter.ViewHolder myViewHolder = new AdminOrderCustomAdapter.ViewHolder(view);
-        firebaseDatabase = FirebaseDatabase.getInstance();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
         return myViewHolder;
     }

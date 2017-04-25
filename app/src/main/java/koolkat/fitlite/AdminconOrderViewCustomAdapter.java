@@ -6,8 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,11 +30,11 @@ public class AdminconOrderViewCustomAdapter extends RecyclerView.Adapter<Adminco
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView oiltypetv;
-        TextView quantitytv;
-        TextView pricetv;
-        TextView statustv;
-        TextView datetv;
+        final TextView oiltypetv;
+        final TextView quantitytv;
+        final TextView pricetv;
+        final TextView statustv;
+        final TextView datetv;
 
 
         public ViewHolder(View itemView) {
@@ -52,8 +50,7 @@ public class AdminconOrderViewCustomAdapter extends RecyclerView.Adapter<Adminco
     @Override
     public AdminconOrderViewCustomAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.admin_order_card_layout, parent, false);
-        AdminconOrderViewCustomAdapter.ViewHolder myViewHolder = new AdminconOrderViewCustomAdapter.ViewHolder(view);
-        return myViewHolder;
+        return new ViewHolder(view);
     }
 
     @Override
@@ -63,7 +60,7 @@ public class AdminconOrderViewCustomAdapter extends RecyclerView.Adapter<Adminco
             String oiltype = "Oil : " + oilTypes.get(position);
             String quantity = "Quantity : " + quantities.get(position).toString() + " litres";
             String price = "Price : ₹" + prices.get(position).toString();
-            String stat = "Status : " + status.get(position).toString();
+            String stat = "Status : " + status.get(position);
             holder.oiltypetv.setText(oiltype);
             holder.quantitytv.setText(quantity);
             holder.pricetv.setText(price);

@@ -1,6 +1,5 @@
 package koolkat.fitlite;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,9 +11,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,22 +29,19 @@ public class AdminconOrderViewActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-    private FirebaseAuth firebaseAuth;
-    private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference databaseReference;
     private AdminconOrderViewCustomAdapter adapter;
 
-    final private List<String> oilTypes = new ArrayList<String>();
-    final private List<Integer> quantities = new ArrayList<Integer>();
-    final private List<Integer> prices = new ArrayList<Integer>();
-    final private List<String> status = new ArrayList<String>();
-    final private List<String> dates = new ArrayList<String>();
+    final private List<String> oilTypes = new ArrayList<>();
+    final private List<Integer> quantities = new ArrayList<>();
+    final private List<Integer> prices = new ArrayList<>();
+    final private List<String> status = new ArrayList<>();
+    final private List<String> dates = new ArrayList<>();
 
     private final List<OilRequest> oilRequestsList = new ArrayList<>();
     private String username;
     private String phone;
-    String uid;
-    FloatingActionButton callfab;
+    private String uid;
+    private FloatingActionButton callfab;
 
     public AdminconOrderViewActivity() {
 
@@ -59,8 +53,8 @@ public class AdminconOrderViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order_view);
 
         recyclerView = (RecyclerView) findViewById(R.id.admin_order_recycler_view);
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference();
 
         username = getIntent().getStringExtra("username");
         phone = getIntent().getStringExtra("phone");

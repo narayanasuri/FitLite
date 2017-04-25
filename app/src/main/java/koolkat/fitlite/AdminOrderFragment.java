@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,15 +26,23 @@ import com.google.firebase.database.ValueEventListener;
 
 public class AdminOrderFragment extends Fragment {
 
-    private FirebaseAuth firebaseAuth;
     private FirebaseUser user;
     private DatabaseReference databaseReference;
-    ProgressDialog progressDialog;
-    TextView type1tv, type2tv, type3tv, type4tv;
-    EditText type1et, type2et, type3et, type4et;
-    Button edit;
-    String typeAprice, typeBprice, typeCprice, typeDprice;
-    int x = 1;
+    private ProgressDialog progressDialog;
+    private TextView type1tv;
+    private TextView type2tv;
+    private TextView type3tv;
+    private TextView type4tv;
+    private EditText type1et;
+    private EditText type2et;
+    private EditText type3et;
+    private EditText type4et;
+    private Button edit;
+    private String typeAprice;
+    private String typeBprice;
+    private String typeCprice;
+    private String typeDprice;
+    private int x = 1;
 
     public AdminOrderFragment() {
         // Required empty public constructor
@@ -58,7 +65,6 @@ public class AdminOrderFragment extends Fragment {
         type3et.setEnabled(false);
         type4et.setEnabled(false);
         edit = (Button) view.findViewById(R.id.editbutton);
-        firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
         progressDialog = new ProgressDialog(this.getContext());
         progressDialog.setMessage("Retrieving Prices, Please Wait");

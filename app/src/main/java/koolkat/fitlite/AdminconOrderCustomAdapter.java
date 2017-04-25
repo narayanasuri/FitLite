@@ -16,26 +16,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Admin on 4/15/2017.
+ * Created by Suri & Kushagra on 4/15/2017.
  */
 
 public class AdminconOrderCustomAdapter extends RecyclerView.Adapter<AdminconOrderCustomAdapter.ViewHolder> {
 
     private List<String> usernames = new ArrayList<>();
     private List<String> phonenumbers = new ArrayList<>();
-    private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
 
-    public AdminconOrderCustomAdapter(List<String> usernames, List<String> phonenumbers, List<Integer> orderNumbers) {
+    public AdminconOrderCustomAdapter(List<String> usernames, List<String> phonenumbers) {
         this.usernames = usernames;
         this.phonenumbers = phonenumbers;
 
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView usernametv;
-        TextView phonenumbertv;
-        TextView ordernotv;
+        final TextView usernametv;
+        final TextView phonenumbertv;
+        final TextView ordernotv;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -49,10 +48,9 @@ public class AdminconOrderCustomAdapter extends RecyclerView.Adapter<AdminconOrd
     @Override
     public AdminconOrderCustomAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.order_card_layout, parent, false);
-        firebaseDatabase = FirebaseDatabase.getInstance();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
-        AdminconOrderCustomAdapter.ViewHolder myViewHolder = new AdminconOrderCustomAdapter.ViewHolder(view);
-        return myViewHolder;
+        return new ViewHolder(view);
     }
 
 

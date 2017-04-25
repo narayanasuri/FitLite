@@ -15,7 +15,7 @@
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/orderviewcallfab"
         android:layout_width="wrap_content"
-        android:backgroundTint="#e52d27"
+        app:backgroundTint="#e52d27"
         android:background="#e52d27"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
