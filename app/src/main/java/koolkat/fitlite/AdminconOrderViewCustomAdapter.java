@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,12 +21,14 @@ public class AdminconOrderViewCustomAdapter extends RecyclerView.Adapter<Adminco
     private List<Integer> quantities = new ArrayList<>();
     private List<Integer> prices = new ArrayList<>();
     private List<String> status = new ArrayList<>();
+    private List<String> dates = new ArrayList<>();
 
-    public AdminconOrderViewCustomAdapter(List<String> oilTypes, List<Integer> quantities, List<Integer> prices, List<String> status) {
+    public AdminconOrderViewCustomAdapter(List<String> oilTypes, List<Integer> quantities, List<Integer> prices, List<String> status, List<String> dates) {
         this.oilTypes = oilTypes;
         this.quantities = quantities;
         this.prices = prices;
         this.status = status;
+        this.dates = dates;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -32,6 +36,7 @@ public class AdminconOrderViewCustomAdapter extends RecyclerView.Adapter<Adminco
         TextView quantitytv;
         TextView pricetv;
         TextView statustv;
+        TextView datetv;
 
 
         public ViewHolder(View itemView) {
@@ -40,6 +45,7 @@ public class AdminconOrderViewCustomAdapter extends RecyclerView.Adapter<Adminco
             quantitytv = (TextView) itemView.findViewById(R.id.ordercard_quantity);
             pricetv = (TextView) itemView.findViewById(R.id.ordercard_price);
             statustv = (TextView) itemView.findViewById(R.id.ordercard_status);
+            datetv = (TextView) itemView.findViewById(R.id.ordercard_date);
         }
     }
 
@@ -62,6 +68,7 @@ public class AdminconOrderViewCustomAdapter extends RecyclerView.Adapter<Adminco
             holder.quantitytv.setText(quantity);
             holder.pricetv.setText(price);
             holder.statustv.setText(stat);
+            holder.datetv.setText(dates.get(position));
         }
 
     }

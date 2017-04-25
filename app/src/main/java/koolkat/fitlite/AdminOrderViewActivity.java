@@ -39,6 +39,7 @@ public class AdminOrderViewActivity extends Activity {
     final private List<Integer> request = new ArrayList<Integer>();
     final private List<Integer> discount = new ArrayList<Integer>();
     final private List<String> statuses = new ArrayList<String>();
+    final private List<String> dates = new ArrayList<String>();
     private final List<OilRequest> oilRequestsList = new ArrayList<>();
     int confirmed, litres, x, price, oilQuantity, count;
     String uid;
@@ -77,7 +78,7 @@ public class AdminOrderViewActivity extends Activity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        adapter = new AdminOrderViewCustomAdapter(oilTypes, quantities, prices, statuses);
+        adapter = new AdminOrderViewCustomAdapter(oilTypes, quantities, prices, statuses, dates);
 
         recyclerView.setAdapter(adapter);
 
@@ -192,6 +193,7 @@ public class AdminOrderViewActivity extends Activity {
                 prices.clear();
                 statuses.clear();
                 discount.clear();
+                dates.clear();
                 uid = dataSnapshot.child("userids").child(username).getValue().toString();
                 Iterable<DataSnapshot> oilInformation = dataSnapshot.child("requests").child(uid).child("orders").getChildren();
                 for (DataSnapshot info : oilInformation) {
@@ -204,13 +206,14 @@ public class AdminOrderViewActivity extends Activity {
                         prices.add(oilRequest.getPrice());
                         statuses.add(oilRequest.getStatus());
                         discount.add(oilRequest.getDiscount());
+                        dates.add(oilRequest.getOrderdate());
                         recyclerView.setHasFixedSize(true);
 
                         layoutManager = new LinearLayoutManager(getApplicationContext());
                         recyclerView.setLayoutManager(layoutManager);
                         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-                        adapter = new AdminOrderViewCustomAdapter(oilTypes, quantities, prices, statuses);
+                        adapter = new AdminOrderViewCustomAdapter(oilTypes, quantities, prices, statuses, dates);
                         adapter.notifyDataSetChanged();
                         recyclerView.setAdapter(adapter);
                         adapter.notifyDataSetChanged();

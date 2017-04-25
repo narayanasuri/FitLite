@@ -44,13 +44,22 @@
             android:textSize="17sp" />
 
         <TextView
+            android:id="@+id/card_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="04-Dec-2016"
+            android:textColor="@android:color/white"
+            android:textSize="17sp"
+            android:textStyle="italic" />
+
+        <TextView
             android:id="@+id/card_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_below="@id/card_oiltype"
-            android:text="Status : "
+            android:text="Status : Pending"
+            android:layout_below="@id/card_date"
             android:textColor="@android:color/white"
             android:textSize="17sp"
             android:textStyle="italic" />

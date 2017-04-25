@@ -11,28 +11,44 @@
         android:layout_weight="0.1"
         android:background="@color/matYellow">
 
-        <TextView
-            android:id="@+id/name1"
-            android:layout_width="0dp"
+        <RelativeLayout
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:gravity="center_vertical"
+            android:layout_width="0dp">
+
+        <TextView
+            android:id="@+id/name1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:padding="5dp"
             android:text="Name:"
+            android:textStyle="bold"
             android:textColor="#ffffff"
             android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/phone1"
-            android:layout_width="0dp"
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_height="match_parent"
             android:layout_weight="0.5"
+            android:layout_width="0dp">
+
+        <TextView
+            android:id="@+id/phone1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:autoLink="phone"
-            android:gravity="center_vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:padding="5dp"
             android:text="Mobile:"
+            android:textStyle="bold"
             android:textColor="#ffffff"
             android:textSize="20sp" />
+
+        </RelativeLayout>
 
     </LinearLayout>
 

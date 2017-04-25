@@ -12,18 +12,20 @@ public class OilRequest {
     public String status;
     public int price;
     public int discount;
+    public String orderdate;
 
     public OilRequest() {
 
     }
 
-    public OilRequest(int requestId, String oilType, int oilQuantity, String status, int price, int discount) {
+    public OilRequest(int requestId, String oilType, int oilQuantity, String status, int price, int discount, String orderdate) {
         this.requestId = requestId;
         this.oilType = oilType;
         this.oilQuantity = oilQuantity;
         this.status = status;
         this.price = price;
         this.discount = discount;
+        this.orderdate = orderdate;
     }
 
     public int getRequestId() {
@@ -49,5 +51,7 @@ public class OilRequest {
     public int getDiscount() {
         return discount;
     }
+
+    public String getOrderdate(){ return orderdate; }
 
 }

@@ -35,6 +35,7 @@ public class OrderFragment extends Fragment {
     private final List<Integer> pricey = new ArrayList<Integer>();
     private final List<String> statuses = new ArrayList<>();
     private final List<Integer> discounts = new ArrayList<>();
+    private final List<String> dates = new ArrayList<String>();
     private final List<OilRequest> oilRequestsList = new ArrayList<>();
 
     private static RecyclerView.Adapter adapter;
@@ -64,6 +65,7 @@ public class OrderFragment extends Fragment {
                 statuses.clear();
                 pricey.clear();
                 discounts.clear();
+                dates.clear();
                 FirebaseUser user = firebaseAuth.getCurrentUser();
 
                 Iterable<DataSnapshot> oilInformation = dataSnapshot.child(user.getUid()).child("orders").getChildren();
@@ -75,6 +77,7 @@ public class OrderFragment extends Fragment {
                     statuses.add(oilRequest.getStatus());
                     pricey.add(oilRequest.getPrice());
                     discounts.add(oilRequest.getDiscount());
+                    dates.add(oilRequest.getOrderdate());
                 }
 
                 recyclerView.setHasFixedSize(true);
@@ -83,7 +86,7 @@ public class OrderFragment extends Fragment {
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-                adapter = new CustomAdapter(oilTypes, oilQuantitities, pricey, statuses, discounts);
+                adapter = new CustomAdapter(oilTypes, oilQuantitities, pricey, statuses, discounts, dates);
 
                 recyclerView.setAdapter(adapter);
 

@@ -2,6 +2,9 @@ package koolkat.fitlite;
 
 
 import android.app.ProgressDialog;
+import android.icu.text.SimpleDateFormat;
+import android.icu.util.Calendar;
+import android.icu.util.TimeZone;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -47,6 +50,8 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
     private ProgressDialog progressDialog;
+    Calendar c;
+    SimpleDateFormat df;
 
     public RequestFragment() {
         // Required empty public constructor
@@ -62,6 +67,9 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
         requestButton = (Button) view.findViewById(R.id.requestBtn);
         quantityet = (EditText) view.findViewById(R.id.quantity_et);
         pricea = (TextView) view.findViewById(R.id.price);
+
+        df = new SimpleDateFormat("dd-MMM-yyyy");
+        c = Calendar.getInstance(TimeZone.getTimeZone("GMT+5:30"));
 
         progressDialog = new ProgressDialog(getContext());
         firebaseAuth = FirebaseAuth.getInstance();
@@ -81,8 +89,6 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
                 Bprice = Integer.parseInt(dataSnapshot.child("oil2").getValue().toString());
                 Cprice = Integer.parseInt(dataSnapshot.child("oil3").getValue().toString());
                 Dprice = Integer.parseInt(dataSnapshot.child("oil4").getValue().toString());
-
-
             }
 
             @Override
@@ -159,16 +165,16 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
     }
 
     public void a(int reqId) {
+        String formattedDate = df.format(c.getTime());
         FirebaseUser user = firebaseAuth.getCurrentUser();
         reqId = reqId + 1;
         orderid = "" + reqId;
-        OilRequest oilRequest = new OilRequest(reqId, oiltype, quantity, status, price, discount);
+        OilRequest oilRequest = new OilRequest(reqId, oiltype, quantity, status, price, discount, formattedDate);
         databaseReference.child("Users").child(user.getUid()).child("numberOfOrders").setValue(reqId);
         databaseReference.child("requests").child(user.getUid()).child("numberOfOrders").setValue(reqId);
         databaseReference.child("requests").child(user.getUid()).child("orders").child(orderid).setValue(oilRequest);
         progressDialog.dismiss();
         Toast.makeText(getContext(), "Request successful!", Toast.LENGTH_SHORT).show();
-
     }
 
     public void b() {
@@ -197,5 +203,4 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
                 price = 0;
         }
     }
-
 }

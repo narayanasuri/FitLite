@@ -19,12 +19,14 @@ public class AdminOrderViewCustomAdapter extends RecyclerView.Adapter<AdminOrder
     private List<Integer> quantities = new ArrayList<>();
     private List<Integer> prices = new ArrayList<>();
     private List<String> statuses = new ArrayList<>();
+    private List<String> dates = new ArrayList<>();
 
-    public AdminOrderViewCustomAdapter(List<String> oilTypes, List<Integer> quantities, List<Integer> prices, List<String> statuses) {
+    public AdminOrderViewCustomAdapter(List<String> oilTypes, List<Integer> quantities, List<Integer> prices, List<String> statuses, List<String> dates) {
         this.oilTypes = oilTypes;
         this.quantities = quantities;
         this.prices = prices;
         this.statuses = statuses;
+        this.dates = dates;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -32,6 +34,7 @@ public class AdminOrderViewCustomAdapter extends RecyclerView.Adapter<AdminOrder
         TextView quantitytv;
         TextView pricetv;
         TextView statustv;
+        TextView datetv;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -39,6 +42,7 @@ public class AdminOrderViewCustomAdapter extends RecyclerView.Adapter<AdminOrder
             quantitytv = (TextView) itemView.findViewById(R.id.ordercard_quantity);
             pricetv = (TextView) itemView.findViewById(R.id.ordercard_price);
             statustv = (TextView) itemView.findViewById(R.id.ordercard_status);
+            datetv = (TextView) itemView.findViewById(R.id.ordercard_date);
         }
     }
 
@@ -60,7 +64,7 @@ public class AdminOrderViewCustomAdapter extends RecyclerView.Adapter<AdminOrder
         holder.quantitytv.setText(quantity);
         holder.pricetv.setText(price);
         holder.statustv.setText(status);
-
+        holder.datetv.setText(dates.get(position));
     }
 
     @Override
