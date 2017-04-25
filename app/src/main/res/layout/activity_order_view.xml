@@ -1,62 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
-    android:orientation="vertical">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.1"
-        android:background="@color/matYellow">
-
-        <RelativeLayout
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:layout_width="0dp">
-
-        <TextView
-            android:id="@+id/name1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:padding="5dp"
-            android:text="Name:"
-            android:textStyle="bold"
-            android:textColor="#ffffff"
-            android:textSize="20sp" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:layout_width="0dp">
-
-        <TextView
-            android:id="@+id/phone1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:autoLink="phone"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:padding="5dp"
-            android:text="Mobile:"
-            android:textStyle="bold"
-            android:textColor="#ffffff"
-            android:textSize="20sp" />
-
-        </RelativeLayout>
-
-    </LinearLayout>
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/admin_order_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.8"
+        android:layout_height="match_parent"
         android:scrollbars="vertical" />
 
-</LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/orderviewcallfab"
+        android:layout_width="wrap_content"
+        android:backgroundTint="#e52d27"
+        android:background="#e52d27"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        app:fabSize="auto"
+        android:layout_margin="@dimen/fab_margin"
+        app:elevation="8dp"
+        android:src="@drawable/ic_action_call" />
+
+</android.support.design.widget.CoordinatorLayout>

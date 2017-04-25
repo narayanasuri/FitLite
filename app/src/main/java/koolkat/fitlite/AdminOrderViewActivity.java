@@ -2,11 +2,15 @@ package koolkat.fitlite;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -31,7 +35,7 @@ import java.util.List;
  * Created by Admin on 4/16/2017.
  */
 
-public class AdminOrderViewActivity extends Activity {
+public class AdminOrderViewActivity extends AppCompatActivity {
 
     final private List<String> oilTypes = new ArrayList<String>();
     final private List<Integer> quantities = new ArrayList<Integer>();
@@ -51,6 +55,7 @@ public class AdminOrderViewActivity extends Activity {
     private AdminOrderViewCustomAdapter adapter;
     private String username;
     private String phone;
+    FloatingActionButton callfab;
 
 
     public AdminOrderViewActivity() {
@@ -68,10 +73,10 @@ public class AdminOrderViewActivity extends Activity {
 
         username = getIntent().getStringExtra("username");
         phone = getIntent().getStringExtra("phone");
-        TextView a = (TextView) findViewById(R.id.name1);
-        TextView b = (TextView) findViewById(R.id.phone1);
-        a.setText("Name : " + username);
-        b.setText("Mobile : " + phone);
+        //TextView a = (TextView) findViewById(R.id.name1);
+        //a.setText("Name : " + username);
+        getSupportActionBar().setTitle(username);
+        callfab = (FloatingActionButton) findViewById(R.id.orderviewcallfab);
 
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
@@ -81,6 +86,16 @@ public class AdminOrderViewActivity extends Activity {
         adapter = new AdminOrderViewCustomAdapter(oilTypes, quantities, prices, statuses, dates);
 
         recyclerView.setAdapter(adapter);
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0)
+                    callfab.hide();
+                else if (dy < 0)
+                    callfab.show();
+            }
+        });
 
         ViewCompat.setNestedScrollingEnabled(recyclerView, true);
 
@@ -163,6 +178,15 @@ public class AdminOrderViewActivity extends Activity {
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
 
+            }
+        });
+
+        callfab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:"+phone));
+                startActivity(intent);
             }
         });
 

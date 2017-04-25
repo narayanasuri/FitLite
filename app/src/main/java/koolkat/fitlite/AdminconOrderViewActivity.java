@@ -1,12 +1,17 @@
 package koolkat.fitlite;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,7 +28,7 @@ import java.util.List;
  * Created by Admin on 4/16/2017.
  */
 
-public class AdminconOrderViewActivity extends Activity {
+public class AdminconOrderViewActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
@@ -42,6 +47,7 @@ public class AdminconOrderViewActivity extends Activity {
     private String username;
     private String phone;
     String uid;
+    FloatingActionButton callfab;
 
     public AdminconOrderViewActivity() {
 
@@ -58,19 +64,29 @@ public class AdminconOrderViewActivity extends Activity {
 
         username = getIntent().getStringExtra("username");
         phone = getIntent().getStringExtra("phone");
-        TextView a = (TextView) findViewById(R.id.name1);
-        TextView b = (TextView) findViewById(R.id.phone1);
-        a.setText("Name : " + username);
-        b.setText("Mobile : " + phone);
+        //TextView a = (TextView) findViewById(R.id.name1);
+        //a.setText("Name : " + username);
+        getSupportActionBar().setTitle(username);
 
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        callfab = (FloatingActionButton) findViewById(R.id.orderviewcallfab);
 
         adapter = new AdminconOrderViewCustomAdapter(oilTypes, quantities, prices, status, dates);
 
         recyclerView.setAdapter(adapter);
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0)
+                    callfab.hide();
+                else if (dy < 0)
+                    callfab.show();
+            }
+        });
 
         ViewCompat.setNestedScrollingEnabled(recyclerView, true);
 
@@ -117,6 +133,14 @@ public class AdminconOrderViewActivity extends Activity {
             }
         });
 
+        callfab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:"+phone));
+                startActivity(intent);
+            }
+        });
 
     }
 
