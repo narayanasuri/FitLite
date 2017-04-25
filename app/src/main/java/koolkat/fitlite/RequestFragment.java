@@ -187,16 +187,16 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
         else
             x = Integer.parseInt(alpha);
         switch (oiltype) {
-            case "Oil Type A":
+            case "FITLITE GROUNDNUT 1 LTR":
                 price = x * Aprice;
                 break;
-            case "Oil Type B":
+            case "FITLITE GINGELLY  1 LTR":
                 price = x * Bprice;
                 break;
-            case "Oil Type C":
+            case "FITLITE COCONUT 1/2 LTR":
                 price = x * Cprice;
                 break;
-            case "Oil Type D":
+            case "NCS GINGELLY  1 LTR":
                 price = x * Dprice;
                 break;
             default:
