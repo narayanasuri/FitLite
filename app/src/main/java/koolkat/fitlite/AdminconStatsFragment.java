@@ -69,7 +69,7 @@ public class AdminconStatsFragment extends Fragment {
 
         ViewCompat.setNestedScrollingEnabled(recyclerView, true);
 
-        databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child("Users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 

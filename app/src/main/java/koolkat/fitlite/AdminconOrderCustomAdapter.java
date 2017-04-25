@@ -6,6 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +23,8 @@ public class AdminconOrderCustomAdapter extends RecyclerView.Adapter<AdminconOrd
 
     private List<String> usernames = new ArrayList<>();
     private List<String> phonenumbers = new ArrayList<>();
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
 
     public AdminconOrderCustomAdapter(List<String> usernames, List<String> phonenumbers, List<Integer> orderNumbers) {
         this.usernames = usernames;
@@ -27,30 +35,47 @@ public class AdminconOrderCustomAdapter extends RecyclerView.Adapter<AdminconOrd
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView usernametv;
         TextView phonenumbertv;
-
+        TextView ordernotv;
 
         public ViewHolder(View itemView) {
             super(itemView);
             usernametv = (TextView) itemView.findViewById(R.id.card_username);
             phonenumbertv = (TextView) itemView.findViewById(R.id.card_phno);
-
+            ordernotv = (TextView) itemView.findViewById(R.id.card_orderno);
         }
     }
 
 
     @Override
     public AdminconOrderCustomAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.confirmed_card_layout, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.order_card_layout, parent, false);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
         AdminconOrderCustomAdapter.ViewHolder myViewHolder = new AdminconOrderCustomAdapter.ViewHolder(view);
         return myViewHolder;
     }
 
 
     @Override
-    public void onBindViewHolder(AdminconOrderCustomAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final AdminconOrderCustomAdapter.ViewHolder holder,final int position) {
 
         String usr = "Username : " + usernames.get(position);
         String phn = "Phone Number : " + phonenumbers.get(position);
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String id=dataSnapshot.child("userids").child(usernames.get(position)).getValue().toString();
+                final int confirmed = Integer.parseInt(dataSnapshot.child("calc").child(id).child("confirmedOrders").getValue().toString());
+                String ord = "Confirmed orders : " + confirmed;
+                holder.ordernotv.setText(ord);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         holder.usernametv.setText(usr);
         holder.phonenumbertv.setText(phn);
 

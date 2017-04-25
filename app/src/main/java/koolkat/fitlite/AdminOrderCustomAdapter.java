@@ -6,6 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +24,8 @@ public class AdminOrderCustomAdapter extends RecyclerView.Adapter<AdminOrderCust
     private List<String> usernames = new ArrayList<>();
     private List<String> phonenumbers = new ArrayList<>();
     private List<Integer> orderNumbers = new ArrayList<>();
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
 
     public AdminOrderCustomAdapter(List<String> usernames, List<String> phonenumbers, List<Integer> orderNumbers) {
         this.usernames = usernames;
@@ -44,19 +52,37 @@ public class AdminOrderCustomAdapter extends RecyclerView.Adapter<AdminOrderCust
     public AdminOrderCustomAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.order_card_layout, parent, false);
         AdminOrderCustomAdapter.ViewHolder myViewHolder = new AdminOrderCustomAdapter.ViewHolder(view);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
         return myViewHolder;
     }
 
 
     @Override
-    public void onBindViewHolder(AdminOrderCustomAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final AdminOrderCustomAdapter.ViewHolder holder, final int position) {
 
         String usr = "Username : " + usernames.get(position);
         String phn = "Phone Number : " + phonenumbers.get(position);
-        String ord = "Total number of orders : " + orderNumbers.get(position).toString();
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+            String id=dataSnapshot.child("userids").child(usernames.get(position)).getValue().toString();
+            final int confirmed = Integer.parseInt(dataSnapshot.child("calc").child(id).child("confirmedOrders").getValue().toString());
+            final int number=Integer.parseInt(orderNumbers.get(position).toString());
+                int total =number-confirmed;
+                String ord = "Pending/Denied Orders : " + total;
+                holder.ordernotv.setText(ord);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         holder.usernametv.setText(usr);
         holder.phonenumbertv.setText(phn);
-        holder.ordernotv.setText(ord);
 
     }
 
