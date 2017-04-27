@@ -56,7 +56,7 @@ public class AdminOrderViewCustomAdapter extends RecyclerView.Adapter<AdminOrder
     public void onBindViewHolder(AdminOrderViewCustomAdapter.ViewHolder holder, int position) {
 
         String oiltype = "Oil : "+oilTypes.get(position);
-        String quantity = "Quantity : "+quantities.get(position).toString()+" litres";
+        String quantity = "Quantity : "+quantities.get(position).toString();
         String price = "Price : ₹"+prices.get(position).toString();
         String status = "Status : "+ statuses.get(position);
         holder.oiltypetv.setText(oiltype);

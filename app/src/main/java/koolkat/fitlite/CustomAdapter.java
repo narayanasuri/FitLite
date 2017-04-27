@@ -60,7 +60,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         viewHolder.oiltypetv.setText("Oil : " + oilTypes.get(i));
         String quant = oilQuantitities.get(i).toString();
         String price = pricey.get(i).toString();
-        viewHolder.oilquantitytv.setText("Quantity : " + quant + " litres");
+        viewHolder.oilquantitytv.setText("Quantity : " + quant);
         viewHolder.pricetv.setText("Price : ₹" + price + "/-");
         viewHolder.datetv.setText(dates.get(i));
         viewHolder.statustv.setText("Status : " + statuses.get(i));

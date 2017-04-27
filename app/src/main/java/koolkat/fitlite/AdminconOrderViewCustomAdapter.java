@@ -58,7 +58,7 @@ public class AdminconOrderViewCustomAdapter extends RecyclerView.Adapter<Adminco
 
         if (status.get(position).matches("Approved")) {
             String oiltype = "Oil : " + oilTypes.get(position);
-            String quantity = "Quantity : " + quantities.get(position).toString() + " litres";
+            String quantity = "Quantity : " + quantities.get(position).toString();
             String price = "Price : ₹" + prices.get(position).toString();
             String stat = "Status : " + status.get(position);
             holder.oiltypetv.setText(oiltype);
