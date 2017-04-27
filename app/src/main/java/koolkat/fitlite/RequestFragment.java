@@ -55,8 +55,9 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
     private ProgressDialog progressDialog;
-    private Calendar c;
-    private SimpleDateFormat df;
+    //private Calendar c;
+    private java.util.Calendar c;
+    private java.text.SimpleDateFormat df;
     private int value=0;
     public RequestFragment() {
         // Required empty public constructor
@@ -73,8 +74,9 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
         quantityet = (EditText) view.findViewById(R.id.quantity_et);
         pricea = (TextView) view.findViewById(R.id.price);
 
-        df = new SimpleDateFormat("dd-MMM-yyyy");
-        c = Calendar.getInstance(TimeZone.getTimeZone("GMT+5:30"));
+        df = new java.text.SimpleDateFormat("dd-MMM-yyyy");
+        c = java.util.Calendar.getInstance(java.util.TimeZone.getTimeZone("GMT+5:30"));
+        //c = Calendar.getInstance(java.util.TimeZone.getTimeZone("GMT+5:30"));
 
         progressDialog = new ProgressDialog(getContext());
         firebaseAuth = FirebaseAuth.getInstance();
