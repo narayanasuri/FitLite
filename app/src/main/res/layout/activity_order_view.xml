@@ -15,12 +15,11 @@
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/orderviewcallfab"
         android:layout_width="wrap_content"
-        app:backgroundTint="#e52d27"
-        android:background="#e52d27"
+        app:backgroundTint="#CDDC39"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        app:fabSize="auto"
-        android:layout_margin="@dimen/fab_margin"
+        app:fabSize="normal"
+        android:layout_margin="25dp"
         app:elevation="8dp"
         android:src="@drawable/ic_action_call" />
 

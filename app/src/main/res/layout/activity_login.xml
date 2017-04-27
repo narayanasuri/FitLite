@@ -188,6 +188,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.7"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_horizontal"
                     android:padding="12dp"
                     android:text="Forgot Password? Click here."
                     android:textColor="#222222"
