@@ -2,9 +2,6 @@ package koolkat.fitlite;
 
 
 import android.app.ProgressDialog;
-import android.icu.text.SimpleDateFormat;
-import android.icu.util.Calendar;
-import android.icu.util.TimeZone;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -76,7 +73,6 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
 
         df = new java.text.SimpleDateFormat("dd-MMM-yyyy");
         c = java.util.Calendar.getInstance(java.util.TimeZone.getTimeZone("GMT+5:30"));
-        //c = Calendar.getInstance(java.util.TimeZone.getTimeZone("GMT+5:30"));
 
         progressDialog = new ProgressDialog(getContext());
         firebaseAuth = FirebaseAuth.getInstance();

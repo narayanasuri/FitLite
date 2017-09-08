@@ -88,7 +88,6 @@ public class OrderFragment extends Fragment {
                 adapter = new CustomAdapter(oilTypes, oilQuantitities, pricey, statuses, discounts, dates);
 
                 recyclerView.setAdapter(adapter);
-
             }
 
             @Override

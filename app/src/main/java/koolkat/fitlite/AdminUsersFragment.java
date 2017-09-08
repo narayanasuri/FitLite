@@ -29,7 +29,7 @@ import java.util.Map;
  * Created by Admin on 4/15/2017.
  */
 
-public class AdminStatsFragment extends Fragment {
+public class AdminUsersFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
@@ -41,7 +41,7 @@ public class AdminStatsFragment extends Fragment {
     final private List<Integer> orderNumbers = new ArrayList<>();
     final private List<UserInformation> userInformations = new ArrayList<>();
 
-    public AdminStatsFragment() {
+    public AdminUsersFragment() {
 
     }
 
@@ -68,6 +68,7 @@ public class AdminStatsFragment extends Fragment {
         ViewCompat.setNestedScrollingEnabled(recyclerView, true);
 
         databaseReference.child("Users").addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -93,6 +94,7 @@ public class AdminStatsFragment extends Fragment {
             public void onCancelled(DatabaseError databaseError) {
 
             }
+
         });
 
 

@@ -44,7 +44,7 @@ public class AdminActivity extends AppCompatActivity {
      */
         ViewPager mViewPager = (ViewPager) findViewById(R.id.container_admin);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-        mViewPager.setCurrentItem(1);
+        mViewPager.setCurrentItem(0);
 
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
@@ -105,14 +105,13 @@ public class AdminActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new AdminStatsFragment();
-
-                case 1:
                     return new AdminOrderFragment();
 
-                case 2:
-                    return new AdminconStatsFragment();
+                case 1:
+                    return new AdminUsersFragment();
 
+//                case 2:
+//                    return new AdminconStatsFragment();
 
                 default:
                     return null;
@@ -123,18 +122,18 @@ public class AdminActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 2;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "REQUESTS";
-                case 1:
                     return "PRICES";
-                case 2:
-                    return "CONFIRMED ORDERS";
+                case 1:
+                    return "USERS";
+//                case 2:
+//                    return "CONFIRMED ORDERS";
             }
             return null;
         }

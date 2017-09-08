@@ -62,26 +62,10 @@ public class AdminOrderCustomAdapter extends RecyclerView.Adapter<AdminOrderCust
 
         String usr = "Username : " + usernames.get(position);
         String phn = "Phone Number : " + phonenumbers.get(position);
-
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-            String id=dataSnapshot.child("userids").child(usernames.get(position)).getValue().toString();
-            final int confirmed = Integer.parseInt(dataSnapshot.child("calc").child(id).child("confirmedOrders").getValue().toString());
-            final int number=Integer.parseInt(orderNumbers.get(position).toString());
-                int total =number-confirmed;
-                String ord = "Pending/Denied Orders : " + total;
-                holder.ordernotv.setText(ord);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
+        String ordrs = "Number of Requests : " + orderNumbers.get(position);
         holder.usernametv.setText(usr);
         holder.phonenumbertv.setText(phn);
+        holder.ordernotv.setText(ordrs);
 
     }
 

@@ -77,7 +77,7 @@ public class AdminOrderViewActivity extends AppCompatActivity {
         phone = getIntent().getStringExtra("phone");
         //TextView a = (TextView) findViewById(R.id.name1);
         //a.setText("Name : " + username);
-        getSupportActionBar().setTitle(username);
+        getSupportActionBar().setTitle(username+"'s Orders");
         callfab = (FloatingActionButton) findViewById(R.id.orderviewcallfab);
 
         recyclerView.setHasFixedSize(true);
