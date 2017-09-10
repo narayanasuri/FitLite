@@ -5,7 +5,7 @@
     android:id="@+id/main_content_admin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="koolkat.fitlite.AdminActivity">
+    tools:context="koolkat.fitlite.admin.AdminActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar_admin"

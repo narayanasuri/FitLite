@@ -42,7 +42,7 @@
             android:label="View Confirmed Orders"
             />
         <activity
-            android:name=".AdminActivity"
+            android:name=".admin.AdminActivity"
             android:label="FitLite"
             android:theme="@style/AppTheme.NoActionBar"/>
 

@@ -1,4 +1,4 @@
-package koolkat.fitlite;
+package koolkat.fitlite.admin;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -16,6 +16,9 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+
+import koolkat.fitlite.LoginActivity;
+import koolkat.fitlite.R;
 
 public class AdminActivity extends AppCompatActivity {
 
@@ -105,7 +108,7 @@ public class AdminActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new AdminOrderFragment();
+                    return new AdminProductsFragment();
 
                 case 1:
                     return new AdminUsersFragment();
@@ -129,7 +132,7 @@ public class AdminActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "PRICES";
+                    return "PRODUCTS";
                 case 1:
                     return "USERS";
 //                case 2:

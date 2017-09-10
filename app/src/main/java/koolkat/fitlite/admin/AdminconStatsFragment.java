@@ -1,4 +1,4 @@
-package koolkat.fitlite;
+package koolkat.fitlite.admin;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,6 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import koolkat.fitlite.AdminconOrderViewActivity;
+import koolkat.fitlite.R;
+
 /**
  * Created by Admin on 4/15/2017.
  */
@@ -45,9 +48,9 @@ public class AdminconStatsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_admin_stats, container, false);
+        View view = inflater.inflate(R.layout.fragment_admin_users, container, false);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.order_recycler_view);
+        recyclerView = (RecyclerView) view.findViewById(R.id.users_recycler_view);
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference();
 

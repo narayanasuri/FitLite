@@ -1,4 +1,4 @@
-package koolkat.fitlite;
+package koolkat.fitlite.admin;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,6 +14,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import koolkat.fitlite.R;
 
 /**
  * Created by Suri & Kushagra on 4/15/2017.

@@ -2,7 +2,7 @@
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/admin_order_card_view"
+    android:id="@+id/price_order_card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -14,45 +14,36 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/user_imgv"
+            android:id="@+id/oil_imgv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:paddingLeft="12dp"
             android:paddingRight="8dp"
-            android:src="@drawable/user" />
+            android:src="@drawable/oil" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
-            android:layout_toRightOf="@id/user_imgv"
+            android:layout_toRightOf="@id/oil_imgv"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/card_username"
+                android:id="@+id/price_card_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="2dp"
-                android:text="Username : "
+                android:text="FITLITE GROUNDNUT"
                 android:textColor="@android:color/white"
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/card_phno"
+                android:id="@+id/price_card_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="2dp"
-                android:text="Phone Number :  "
-                android:textColor="@android:color/white"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/card_orderno"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
-                android:text="Number of orders : "
+                android:text="Rs. 200/ Litre"
                 android:textColor="@android:color/white"
                 android:textSize="18sp" />
 

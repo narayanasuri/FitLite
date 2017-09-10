@@ -4,7 +4,7 @@ package koolkat.fitlite;
  * Created by Admin on 4/9/2017.
  */
 
-class UserInformation {
+public class UserInformation {
 
     private int numberOfOrders;
     private String username;
