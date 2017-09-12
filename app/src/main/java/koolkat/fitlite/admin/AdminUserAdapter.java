@@ -1,6 +1,7 @@
 package koolkat.fitlite.admin;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +58,7 @@ public class AdminUserAdapter extends RecyclerView.Adapter<AdminUserAdapter.View
     public void onBindViewHolder(final AdminUserAdapter.ViewHolder holder, final int position) {
 
         String usr = "Username : " + usernames.get(position);
+//        Log.i("Username", usr);
         String phn = "Phone Number : " + phonenumbers.get(position);
         String ordrs = "Number of Requests : " + orderNumbers.get(position);
         holder.usernametv.setText(usr);
