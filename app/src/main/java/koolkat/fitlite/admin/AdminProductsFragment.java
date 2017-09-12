@@ -61,7 +61,7 @@ public class AdminProductsFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Toast Message!", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Snackbar Message!", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
