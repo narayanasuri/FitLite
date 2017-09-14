@@ -57,15 +57,6 @@ public class AdminProductsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_admin_order, container, false);
 
 
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.product_fragment_fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Snackbar Message!", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         oilsRecyclerView = (RecyclerView) view.findViewById(R.id.prices_recycler_view);
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 

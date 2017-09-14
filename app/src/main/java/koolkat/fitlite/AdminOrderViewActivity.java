@@ -75,6 +75,8 @@ public class AdminOrderViewActivity extends AppCompatActivity {
 
         username = getIntent().getStringExtra("username");
         phone = getIntent().getStringExtra("phone");
+
+        uid = getIntent().getStringExtra("uid");
         //TextView a = (TextView) findViewById(R.id.name1);
         //a.setText("Name : " + username);
         getSupportActionBar().setTitle(username+"'s Orders");
@@ -220,7 +222,6 @@ public class AdminOrderViewActivity extends AppCompatActivity {
                 statuses.clear();
                 discount.clear();
                 dates.clear();
-                uid = dataSnapshot.child("userids").child(username).getValue().toString();
                 Iterable<DataSnapshot> oilInformation = dataSnapshot.child("requests").child(uid).child("orders").getChildren();
                 for (DataSnapshot info : oilInformation) {
                     OilRequest oilRequest = info.getValue(OilRequest.class);

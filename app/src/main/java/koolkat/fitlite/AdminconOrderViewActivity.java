@@ -58,8 +58,7 @@ public class AdminconOrderViewActivity extends AppCompatActivity {
 
         username = getIntent().getStringExtra("username");
         phone = getIntent().getStringExtra("phone");
-        //TextView a = (TextView) findViewById(R.id.name1);
-        //a.setText("Name : " + username);
+        uid = getIntent().getStringExtra("uid");
         getSupportActionBar().setTitle(username);
 
         recyclerView.setHasFixedSize(true);
@@ -93,8 +92,7 @@ public class AdminconOrderViewActivity extends AppCompatActivity {
                 prices.clear();
                 status.clear();
                 dates.clear();
-                uid = dataSnapshot.child("userids").child(username).getValue().toString();
-                Iterable<DataSnapshot> oilInformation = dataSnapshot.child("requests").child(uid).child("orders").getChildren();
+                Iterable<DataSnapshot> oilInformation = dataSnapshot.child("Orders").child(uid).getChildren();
                 for (DataSnapshot info : oilInformation) {
                     OilRequest oilRequest = info.getValue(OilRequest.class);
                     oilRequestsList.add(oilRequest);

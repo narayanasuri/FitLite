@@ -40,8 +40,9 @@ public class AdminUsersFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
     private AdminUserAdapter adapter;
 
-    final private List<String> usernames = new ArrayList<>();
+    final private List<String> names = new ArrayList<>();
     final private List<String> phonenumbers = new ArrayList<>();
+    final private List<String> uid = new ArrayList<>();
     final private List<Integer> orderNumbers = new ArrayList<>();
     final private List<UserInformation> userInformations = new ArrayList<>();
 
@@ -65,7 +66,7 @@ public class AdminUsersFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        adapter = new AdminUserAdapter(usernames, phonenumbers, orderNumbers);
+        adapter = new AdminUserAdapter(names, phonenumbers, orderNumbers);
 
         recyclerView.setAdapter(adapter);
 
@@ -76,11 +77,23 @@ public class AdminUsersFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                usernames.clear();
+                names.clear();
                 phonenumbers.clear();
                 orderNumbers.clear();
+                uid.clear();
 
-                collectData((Map<String, Object>) dataSnapshot.getValue());
+                Iterable<DataSnapshot> userinformation = dataSnapshot.getChildren();
+                for (DataSnapshot info : userinformation) {
+                    UserInformation user = info.getValue(UserInformation.class);
+                    userInformations.add(user);
+                    if (user.getUniqueid().equalsIgnoreCase("PEFyeeNaAbOtsoUqVeVJPSIrYjn2") || user.getName().equalsIgnoreCase("selvakumarasamy"))
+                        continue;
+                    names.add(user.getName());
+                    phonenumbers.add(user.getPhonenumber());
+                    orderNumbers.add(user.getNumberOfOrders());
+                    uid.add(user.getUniqueid());
+                }
+
 
                 recyclerView.setHasFixedSize(true);
 
@@ -88,7 +101,7 @@ public class AdminUsersFragment extends Fragment {
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-                adapter = new AdminUserAdapter(usernames, phonenumbers, orderNumbers);
+                adapter = new AdminUserAdapter(names, phonenumbers, orderNumbers);
 
                 recyclerView.setAdapter(adapter);
 
@@ -119,10 +132,11 @@ public class AdminUsersFragment extends Fragment {
                 if (child != null && gestureDetector.onTouchEvent(e)) {
                     final int i = rv.getChildAdapterPosition(child);
 
-                    String usrname = usernames.get(i);
+                    String usrname = names.get(i);
                     String phone = phonenumbers.get(i);
                     Intent intent = new Intent(getContext(), AdminOrderViewActivity.class);
                     intent.putExtra("username", usrname);
+                    intent.putExtra("uid",uid.get(i));
                     intent.putExtra("phone", phone);
                     startActivity(intent);
                 }
@@ -144,21 +158,5 @@ public class AdminUsersFragment extends Fragment {
         return view;
     }
 
-    private void collectData(Map<String, Object> users) {
 
-        //iterate through each user, ignoring their UID
-        for (Map.Entry<String, Object> entry : users.entrySet()) {
-
-            //Get user map
-            Map singleUser = (Map) entry.getValue();
-            //Get phone field and append to list
-            if (singleUser.get("username").toString().equalsIgnoreCase("narayanasuri") || singleUser.get("username").toString().equalsIgnoreCase("selvakumarasamy"))
-                continue;
-            usernames.add(singleUser.get("username").toString());
-            phonenumbers.add(singleUser.get("phonenumber").toString());
-            orderNumbers.add(Integer.parseInt(singleUser.get("numberOfOrders").toString()));
-
-        }
-
-    }
 }

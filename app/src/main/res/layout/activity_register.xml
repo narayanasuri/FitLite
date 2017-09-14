@@ -54,9 +54,9 @@
                     android:layout_margin="6dp"
                     android:backgroundTint="#222222"
                     android:foregroundTint="#222222"
-                    android:hint="Username"
+                    android:hint="Name"
                     android:textColor="#222222"
-                    android:textColorHint="#D3D3D3"
+                    android:textColorHint="#808080"
                     android:textSize="18sp" />
 
             </android.support.design.widget.TextInputLayout>
@@ -141,6 +141,24 @@
                     android:foregroundTint="#222222"
                     android:hint="Confirm Password"
                     android:inputType="textPassword"
+                    android:textColor="#222222"
+                    android:textColorHint="#808080"
+                    android:textSize="18sp" />
+
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#808080">
+
+                <EditText
+                    android:id="@+id/referralet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp"
+                    android:backgroundTint="#222222"
+                    android:foregroundTint="#222222"
+                    android:hint="Referral Code (Optional)"
                     android:textColor="#222222"
                     android:textColorHint="#808080"
                     android:textSize="18sp" />

@@ -64,9 +64,7 @@ public class Profile extends AppCompatActivity {
                 } else {
                     username = name.getText().toString();
                     phone = mobile.getText().toString();
-                    databaseReference.child("userids").child(un).removeValue();
-                    databaseReference.child("userids").child(username).setValue(user.getUid());
-                    databaseReference.child("Users").child(user.getUid()).child("username").setValue(username);
+                    databaseReference.child("Users").child(user.getUid()).child("name").setValue(username);
                     databaseReference.child("Users").child(user.getUid()).child("phonenumber").setValue(phone);
                     edit.setText("Edit");
                     name.setEnabled(false);
@@ -86,7 +84,7 @@ public class Profile extends AppCompatActivity {
         databaseReference.child("Users").child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                username = dataSnapshot.child("username").getValue().toString();
+                username = dataSnapshot.child("name").getValue().toString();
                 un = username;
                 phone = dataSnapshot.child("phonenumber").getValue().toString();
                 name.setText(username);
