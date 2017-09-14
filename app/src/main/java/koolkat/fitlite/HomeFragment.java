@@ -46,13 +46,13 @@ public class HomeFragment extends Fragment {
         progressDialog.show();
         progressDialog.setCancelable(false);
 
-        databaseReference.child("price").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("products").child("oils").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                final String typeAprice = dataSnapshot.child("oil1").getValue().toString();
-                final String typeBprice = dataSnapshot.child("oil2").getValue().toString();
-                final String typeCprice = dataSnapshot.child("oil3").getValue().toString();
-                final String typeDprice = dataSnapshot.child("oil4").getValue().toString();
+                final String typeAprice = dataSnapshot.child("1").child("price").getValue().toString();
+                final String typeBprice = dataSnapshot.child("2").child("price").getValue().toString();
+                final String typeCprice = dataSnapshot.child("3").child("price").getValue().toString();
+                final String typeDprice = dataSnapshot.child("4").child("price").getValue().toString();
 
                 type1tv.setText(typeAprice + "/litre");
                 type2tv.setText(typeBprice + "/litre");

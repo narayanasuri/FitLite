@@ -85,13 +85,13 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
 
         requestButton.setOnClickListener(this);
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        databaseReference.child("price").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("products").child("oils").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Aprice = Integer.parseInt(dataSnapshot.child("oil1").getValue().toString());
-                Bprice = Integer.parseInt(dataSnapshot.child("oil2").getValue().toString());
-                Cprice = Integer.parseInt(dataSnapshot.child("oil3").getValue().toString());
-                Dprice = Integer.parseInt(dataSnapshot.child("oil4").getValue().toString());
+                Aprice = Integer.parseInt(dataSnapshot.child("1").child("price").getValue().toString());
+                Bprice = Integer.parseInt(dataSnapshot.child("2").child("price").getValue().toString());
+                Cprice = Integer.parseInt(dataSnapshot.child("3").child("price").getValue().toString());
+                Dprice = Integer.parseInt(dataSnapshot.child("4").child("price").getValue().toString());
             }
 
             @Override
