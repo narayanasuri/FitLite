@@ -1,7 +1,9 @@
 package koolkat.fitlite.admin;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,24 +13,44 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import koolkat.fitlite.LoginActivity;
+import koolkat.fitlite.Oil;
 import koolkat.fitlite.R;
 
 public class AdminActivity extends AppCompatActivity {
+
     FloatingActionButton fab;
+
+    private DatabaseReference databaseReference;
+    private int productId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
+        databaseReference = FirebaseDatabase.getInstance().getReference();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_admin);
         setSupportActionBar(toolbar);
@@ -36,8 +58,21 @@ public class AdminActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Snackbar Message!", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                showAddOilDialog();
+            }
+        });
+
+        databaseReference.child("products").child("numberOfProducts").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                productId = Integer.parseInt(dataSnapshot.getValue().toString());
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
         // Create the adapter that will return a fragment for each of the three
@@ -103,6 +138,65 @@ public class AdminActivity extends AppCompatActivity {
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
 
         }
+
+    }
+
+    public void showAddOilDialog(){
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.add_oil_dialog, null);
+        dialogBuilder.setView(dialogView);
+
+        final Spinner spinner1 = (Spinner) dialogView.findViewById(R.id.dialog_quantity_spinner);
+        final EditText titleEt = (EditText) dialogView.findViewById(R.id.add_oil_name_et);
+        final EditText priceEt = (EditText) dialogView.findViewById(R.id.add_oil_price_et);
+
+        dialogBuilder.setTitle("Add New Oil");
+//        dialogBuilder.setMessage();
+        dialogBuilder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+                String title = titleEt.getText().toString();
+                String priceStr = priceEt.getText().toString();
+
+                int langpos = spinner1.getSelectedItemPosition();
+                float quantity;
+                switch(langpos) {
+                    case 0:
+                        quantity = 0.5f;
+                        break;
+                    case 1:
+                        quantity = 1;
+                        break;
+                    default:
+                        quantity = 1.5f;
+                        break;
+                }
+
+                if(!title.isEmpty() && !priceStr.isEmpty()){
+                    int price = Integer.parseInt(priceStr);
+                    productId++;
+                    Oil oil = new Oil(title, price, quantity);
+                    databaseReference.child("products").child("oils").child(String.valueOf(productId)).setValue(oil);
+                    databaseReference.child("products").child("numberOfProducts").setValue(String.valueOf(productId));
+                }
+
+            }
+        });
+        dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                //pass
+            }
+        });
+        AlertDialog b = dialogBuilder.create();
+        b.show();
+
+        Button nbutton = b.getButton(DialogInterface.BUTTON_NEGATIVE);
+        nbutton.setTextColor(Color.RED);
+        Button pbutton = b.getButton(DialogInterface.BUTTON_POSITIVE);
+        pbutton.setTextColor(Color.RED);
 
     }
 

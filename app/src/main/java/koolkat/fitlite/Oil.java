@@ -8,13 +8,13 @@ public class Oil {
 
     private String title;
     private int price;
-    private int quantity;
+    private float quantity;
 
     public Oil() {
 
     }
 
-    public Oil(String title, int price, int quantity) {
+    public Oil(String title, int price, float quantity) {
         this.title = title;
         this.price = price;
         this.quantity = quantity;
@@ -36,11 +36,11 @@ public class Oil {
         this.price = price;
     }
 
-    public int getQuantity() {
+    public float getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(float quantity) {
         this.quantity = quantity;
     }
 }

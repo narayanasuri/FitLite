@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <!--<TextView-->
+        <!--android:id="@+id/add_oil_text"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="6dp"-->
+        <!--android:text="Add a new oil"-->
+        <!--android:textColor="@android:color/black"-->
+        <!--android:textSize="20sp" />-->
+
+    <EditText
+        android:id="@+id/add_oil_name_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:hint="Oil Name"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/add_oil_price_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_oil_name_et"
+        android:layout_margin="6dp"
+        android:hint="Price"
+        android:inputType="number"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <Spinner
+        android:id="@+id/dialog_quantity_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_oil_price_et"
+        android:layout_margin="6dp"
+        android:entries="@array/quantities"
+        android:padding="10dp" />
+
+    <!--<Button-->
+        <!--android:id="@+id/add_oil_button"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_below="@id/dialog_quantity_spinner"-->
+        <!--android:text="ADD" />-->
+
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/dialog_quantity_spinner"-->
+        <!--android:layout_toLeftOf="@id/add_oil_button"-->
+        <!--android:text="CANCEL" />-->
+
+</RelativeLayout>

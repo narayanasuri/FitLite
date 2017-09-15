@@ -11,6 +11,11 @@
         <item>FITLITE COCONUT 1/2 LTR</item>
         <item>NCS GINGELLY  1 LTR</item>
     </string-array>
+    <string-array name="quantities">
+        <item>0.5 litres</item>
+        <item>1 litre</item>
+        <item>1.5 litres</item>
+    </string-array>
     <string name="orders">Please select an oil type for requesting. Your request will be processed shortly.
         You can see the status of your request in the \'ORDERS\' pane. If you want to place, multiple orders, please do so one by one.</string>
     <string name="oil_type_a">FITLITE GROUNDNUT 1 LTR : ₹</string>
