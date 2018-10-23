@@ -50,7 +50,7 @@ public class Profile extends AppCompatActivity {
         mobile.setEnabled(false);
         edit=(Button) findViewById(R.id.editbutton);
         a();
-        b();
+        setData();
 
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +74,7 @@ public class Profile extends AppCompatActivity {
                     edit.setText("Edit");
                     name.setEnabled(false);
                     mobile.setEnabled(false);
-                    b();
+                    setData();
                     x++;
                     Toast.makeText(getApplicationContext(), "Data Saved", Toast.LENGTH_SHORT).show();
                 }
@@ -101,7 +101,7 @@ public class Profile extends AppCompatActivity {
         });
 
     }
-    public void b()
+    public void setData()
     {
         name.setText(username);
         email.setText(femail);
